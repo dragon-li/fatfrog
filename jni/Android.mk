@@ -1,0 +1,5 @@
+LOCAL_PATH := $(call my-dir)
+include $(CLEAR_VARS)
+TOP := $(LOCAL_PATH)
+$(info ===========================TOP==$(TOP)===========================)
+include $(call all-makefiles-under,$(LOCAL_PATH))

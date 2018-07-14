@@ -1,0 +1,26 @@
+LIBC_MALLOC_DEBUG {
+  global:
+    calloc;
+    finalize;
+    free;
+    free_malloc_leak_info;
+    get_malloc_leak_info;
+    initialize;
+    iterate;
+    mallinfo;
+    malloc;
+    malloc_backtrace;
+    malloc_disable;
+    malloc_enable;
+    malloc_usable_size;
+    memalign;
+    posix_memalign;
+    realloc;
+	liyl_libc_init_globals;
+	liyl_globals_preinit;
+	liyl_globals_deinit;
+	liyl_libc_preinit;
+
+  local:
+    *;
+};

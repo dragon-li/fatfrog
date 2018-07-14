@@ -1,0 +1,39 @@
+.
+├── avformat                | mpeg2ts,mp4                        |
+│   ├── assembler           |                                    |
+│   └── parser              |                                    |
+├── codec                   | avc,hevc,aac,heac                  |
+├── common                  |                                    |
+│   ├── include             |                                    |
+│   └── src                 |                                    |
+├── datasource              |                                    |
+│   ├── http                |                                    |
+│   ├── p2p                 |                                    |
+│   ├── rtcp                |                                    |
+│   └── rtp                 |                                    |
+├── engine                  |                                    |
+│   └── nuplayer            |                                    |
+├── external                |                                    |
+├── filter                  |                                    |
+├── foundation              |                                    |
+│   ├── external            |                                    |
+│   ├── media               |                                    |
+│   ├── system              |                                    |
+│   └── ui                  |                                    |
+├── libc_bionic             |                                    |
+│   ├── dlmalloc            |                                    |
+│   ├── malloc_debug        |                                    |
+│   └── private             |                                    |
+├── mediasource             |                                    |
+│   ├── dash                |                                    |
+│   ├── hls                 |                                    |
+│   └── rtsp                |                                    |
+├── omx                     |                                    |
+│   └── api                 |                                    |
+├── prebuild                |                                    |
+│   ├── opengl              |                                    |
+│   ├── openmax             |                                    |
+│   └── opensl              |                                    |
+└── render                  |                                    |
+    ├── audiosink           |                                    |
+    └── videosink           |                                    |
