@@ -1,0 +1,867 @@
+*** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+Build fingerprint: 'LeEco/X7_CN/le_x7:6.0/KGXCNFN5902605261S/1495802605:userdebug/test-keys'
+Revision: '0'
+ABI: 'arm'
+pid: 16157, tid: 16157, name: omx_test  >>> /data/local/tmp/omx_test <<<
+signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0
+    r0 00000000  r1 00000002  r2 ffad6f54  r3 ffad6f54
+    r4 f71cee52  r5 f79eacd8  r6 00000002  r7 ffad6fc8
+    r8 00000000  r9 00000000  sl 00000000  fp ffad6f80
+    ip 00000020  sp ffad6ee0  lr f7161104  pc f7161104  cpsr 800f0010
+    d0  61616662696c2e2e  d1  6f65726574735f6d
+    d2  7370626b32393170  d3  7a48303030383434
+    d4  706d2e3038303178  d5  36327862696c2e34
+    d6  6b30303030315f34  d7  706630335f737062
+    d8  0000000000000000  d9  0000000000000000
+    d10 0000000000000000  d11 0000000000000000
+    d12 0000000000000000  d13 0000000000000000
+    d14 0000000000000000  d15 0000000000000000
+    d16 0000000000000000  d17 0000000000000000
+    d18 0000000000000000  d19 0000000000000000
+    d20 0000000000000000  d21 0000000000000000
+    d22 0000000000000000  d23 0000000000000000
+    d24 0000000000000000  d25 0000000000000000
+    d26 0000000000000000  d27 0000000000000000
+    d28 0000000000000000  d29 0000000000000000
+    d30 0000000000000000  d31 0000000000000000
+    scr 80000000
+
+backtrace:
+    #00 pc 00029104  /data/local/tmp/omx_test
+    #01 pc 00053997  /data/local/tmp/omx_test
+    #02 pc 000456b3  /data/local/tmp/omx_test
+    #03 pc 000455f1  /data/local/tmp/omx_test
+    #04 pc 00045c73  /data/local/tmp/omx_test
+    #05 pc 00046585  /data/local/tmp/omx_test
+    #06 pc 0004c941  /data/local/tmp/omx_test
+    #07 pc 00054e89  /data/local/tmp/omx_test
+    #08 pc 0004c6a3  /data/local/tmp/omx_test
+    #09 pc 0004c629  /data/local/tmp/omx_test
+    #10 pc 000346dd  /data/local/tmp/omx_test
+    #11 pc 000346b1  /data/local/tmp/omx_test
+    #12 pc 0001741d  /system/lib/libc.so (__libc_init+44)
+    #13 pc 00011044  /data/local/tmp/omx_test
+
+stack:
+         ffad6ea0  00000000
+         ffad6ea4  00000000
+         ffad6ea8  b3bb020d
+         ffad6eac  f71cee52  /data/local/tmp/omx_test
+         ffad6eb0  f79eacd8  [heap]
+         ffad6eb4  00000002
+         ffad6eb8  ffad6ed0  [stack]
+         ffad6ebc  00000000
+         ffad6ec0  00000000
+         ffad6ec4  f71c22d7  /data/local/tmp/omx_test
+         ffad6ec8  ffad6f54  [stack]
+         ffad6ecc  00000000
+         ffad6ed0  ffad6f54  [stack]
+         ffad6ed4  ffad6f54  [stack]
+         ffad6ed8  ffad6f80  [stack]
+         ffad6edc  ffad6f54  [stack]
+    #00  ffad6ee0  f79eb578  [heap]
+         ffad6ee4  f79eb578  [heap]
+         ffad6ee8  f79eb578  [heap]
+         ffad6eec  f79eb584  [heap]
+         ffad6ef0  f79eb584  [heap]
+         ffad6ef4  f79eb584  [heap]
+         ffad6ef8  f79eb584  [heap]
+         ffad6efc  00000003
+         ffad6f00  f79eb584  [heap]
+         ffad6f04  f79eb584  [heap]
+         ffad6f08  f79eb584  [heap]
+         ffad6f0c  f79eb584  [heap]
+         ffad6f10  f79eb594  [heap]
+         ffad6f14  f74dd5a5  [heap]
+         ffad6f18  00000002
+         ffad6f1c  ffad6f54  [stack]
+         ........  ........
+    #01  ffad6f88  f7161020  /data/local/tmp/omx_test
+         ffad6f8c  f7161020  /data/local/tmp/omx_test
+         ffad6f90  f79eacd8  [heap]
+         ffad6f94  00000010
+         ffad6f98  00000010
+         ffad6f9c  f71cee52  /data/local/tmp/omx_test
+         ffad6fa0  f79eacd8  [heap]
+         ffad6fa4  00000001
+         ffad6fa8  f71cee52  /data/local/tmp/omx_test
+         ffad6fac  00000010
+         ffad6fb0  00000001
+         ffad6fb4  f79eacd8  [heap]
+         ffad6fb8  00000010
+         ffad6fbc  00000001
+         ffad6fc0  f71cee52  /data/local/tmp/omx_test
+         ffad6fc4  f79eacd8  [heap]
+         ........  ........
+    #02  ffad6fd0  f71de064
+         ffad6fd4  ffad6fec  [stack]
+         ffad6fd8  ffad6ff0  [stack]
+         ffad6fdc  ffad6fec  [stack]
+         ffad6fe0  00000010
+         ffad6fe4  f71cee52  /data/local/tmp/omx_test
+         ffad6fe8  f79eacd8  [heap]
+         ffad6fec  00000001
+         ffad6ff0  00000010
+         ffad6ff4  00000001
+         ffad6ff8  f71cee52  /data/local/tmp/omx_test
+         ffad6ffc  00000010
+         ffad7000  00000001
+         ffad7004  f79eacd8  [heap]
+         ffad7008  00000010
+         ffad700c  00000001
+         ........  ........
+    #03  ffad7020  ffad7030  [stack]
+         ffad7024  ffad7030  [stack]
+         ffad7028  f71cee52  /data/local/tmp/omx_test
+         ffad702c  f71cee4a  /data/local/tmp/omx_test
+         ffad7030  f79eacd8  [heap]
+         ffad7034  f79eacd8  [heap]
+         ffad7038  00000000
+         ffad703c  b3bb020d
+         ffad7040  00000010
+         ffad7044  00000001
+         ffad7048  00000008
+         ffad704c  00000001
+         ffad7050  f74b3070  [heap]
+         ffad7054  f79eacd8  [heap]
+         ffad7058  ffad70a8  [stack]
+         ffad705c  f717dc77  /data/local/tmp/omx_test
+    #04  ffad7060  ffffffff
+         ffad7064  00000002
+         ffad7068  f74d4900  [heap]
+         ffad706c  f74d4900  [heap]
+         ffad7070  f71808a3  /data/local/tmp/omx_test
+         ffad7074  f74dd598  [heap]
+         ffad7078  f74dd598  [heap]
+         ffad707c  f717e351  /data/local/tmp/omx_test
+         ffad7080  00000000
+         ffad7084  00000008
+         ffad7088  00000001
+         ffad708c  f79eacd8  [heap]
+         ffad7090  52b4d8bc
+         ffad7094  00000162
+         ffad7098  00000002
+         ffad709c  f74b39d0  [heap]
+         ........  ........
+    #05  ffad70b0  ffffffff
+         ffad70b4  00000002
+         ffad70b8  00000002
+         ffad70bc  00000000
+         ffad70c0  f7180835  /data/local/tmp/omx_test
+         ffad70c4  f74d48e0  [heap]
+         ffad70c8  f74d48e0  [heap]
+         ffad70cc  f7184455  /data/local/tmp/omx_test
+         ffad70d0  00000000
+         ffad70d4  00000002
+         ffad70d8  52b47903
+         ffad70dc  00000162
+         ffad70e0  f74b3070  [heap]
+         ffad70e4  f717e6a3  /data/local/tmp/omx_test
+         ffad70e8  00000000
+         ffad70ec  f74b39d0  [heap]
+         ........  ........
+    #06  ffad7100  f74b3070  [heap]
+         ffad7104  f74b3070  [heap]
+         ffad7108  ffad7300  [stack]
+         ffad710c  f7187dd1  /data/local/tmp/omx_test
+         ffad7110  00000000
+         ffad7114  ffad72dc  [stack]
+         ffad7118  f71de0cc
+         ffad711c  ffad72dc  [stack]
+         ffad7120  00000002
+         ffad7124  f71809ed  /data/local/tmp/omx_test
+         ffad7128  f71807c7  /data/local/tmp/omx_test
+         ffad712c  f7180c27  /data/local/tmp/omx_test
+         ffad7130  00000001
+         ffad7134  00000001
+         ffad7138  f7180759  /data/local/tmp/omx_test
+         ffad713c  00000000
+         ........  ........
+    #07  ffad7258  f71846f1  /data/local/tmp/omx_test
+         ffad725c  f71846f1  /data/local/tmp/omx_test
+         ffad7260  f74b3070  [heap]
+         ffad7264  f71846f1  /data/local/tmp/omx_test
+         ffad7268  f71846f1  /data/local/tmp/omx_test
+         ffad726c  f71cf59d  /data/local/tmp/omx_test
+         ffad7270  f74b3070  [heap]
+         ffad7274  00000000
+         ffad7278  f71cf59d  /data/local/tmp/omx_test
+         ffad727c  f71846f1  /data/local/tmp/omx_test
+         ffad7280  00000000
+         ffad7284  f74b3070  [heap]
+         ffad7288  f71846f1  /data/local/tmp/omx_test
+         ffad728c  00000000
+         ffad7290  f71cf59d  /data/local/tmp/omx_test
+         ffad7294  f74b3070  [heap]
+         ........  ........
+    #08  ffad72a0  00000000
+         ffad72a4  00000000
+         ffad72a8  00000000
+         ffad72ac  00000000
+         ffad72b0  f712c704  /system/bin/linker
+         ffad72b4  f71846f1  /data/local/tmp/omx_test
+         ffad72b8  f71cf59d  /data/local/tmp/omx_test
+         ffad72bc  f74b3070  [heap]
+         ffad72c0  00000000
+         ffad72c4  f71846f1  /data/local/tmp/omx_test
+         ffad72c8  00000000
+         ffad72cc  f71cf59d  /data/local/tmp/omx_test
+         ffad72d0  f71846f1  /data/local/tmp/omx_test
+         ffad72d4  00000000
+         ffad72d8  f74b3070  [heap]
+         ffad72dc  f71846f1  /data/local/tmp/omx_test
+         ........  ........
+    #09  ffad72f8  ffad730c  [stack]
+         ffad72fc  f71de15c
+         ffad7300  f71de15c
+         ffad7304  f71846f1  /data/local/tmp/omx_test
+         ffad7308  00000000
+         ffad730c  f71de15c
+         ffad7310  ffad7318  [stack]
+         ffad7314  f716c6e1  /data/local/tmp/omx_test
+    #10  ffad7318  ffad7348  [stack]
+         ffad731c  f716c6b5  /data/local/tmp/omx_test
+    #11  ffad7320  0000000c
+         ffad7324  f6cdf019  /system/lib/libc.so (__cxa_atexit+196)
+         ffad7328  00000022
+         ffad732c  ffad7384  [stack]
+         ffad7330  f6d12ec0
+         ffad7334  00000002
+         ffad7338  ffad7384  [stack]
+         ffad733c  00000000
+         ffad7340  00000001
+         ffad7344  b3bb020d
+         ffad7348  f716c66d  /data/local/tmp/omx_test
+         ffad734c  f6cad41f  /system/lib/libc.so (__libc_init+46)
+    #12  ffad7350  ffad7368  [stack]
+         ffad7354  00000000
+         ffad7358  00000000
+         ffad735c  00000000
+         ffad7360  00000000
+         ffad7364  f7149048  /data/local/tmp/omx_test
+    #13  ffad7368  f71d7eec  /data/local/tmp/omx_test
+         ffad736c  f71d7ea8  /data/local/tmp/omx_test
+         ffad7370  f71d7ea0  /data/local/tmp/omx_test
+         ffad7374  f71d7ee4  /data/local/tmp/omx_test
+         ffad7378  00000000
+         ffad737c  f711b6ad  /system/bin/linker (__dl___linker_init+1464)
+         ffad7380  00000002
+         ffad7384  ffad7aaf  [stack]
+         ffad7388  00000000
+         ffad738c  00000000
+         ffad7390  ffad7aec  [stack]
+         ffad7394  ffad7b07  [stack]
+         ffad7398  ffad7b27  [stack]
+         ffad739c  ffad7b3a  [stack]
+         ffad73a0  ffad7b54  [stack]
+         ffad73a4  ffad7b69  [stack]
+
+memory near r2:
+    ffad6f34 ffad6f54 ffad6f54 0000006c f74dd5a4  To..To..l.....M.
+    ffad6f44 00000000 f79ec6d8 0000000a f79eacd8  ................
+    ffad6f54 00000000 00000000 00000000 00000000  ................
+    ffad6f64 00000000 00000000 00000000 00000000  ................
+    ffad6f74 00000000 00000000 b3bb020d ffad737c  ............|s..
+    ffad6f84 f718b999 f7161020 f7161020 f79eacd8  .... ... .......
+    ffad6f94 00000010 00000010 f71cee52 f79eacd8  ........R.......
+    ffad6fa4 00000001 f71cee52 00000010 00000001  ....R...........
+    ffad6fb4 f79eacd8 00000010 00000001 f71cee52  ............R...
+    ffad6fc4 f79eacd8 ffad7018 f717d6b7 f71de064  .....p......d...
+    ffad6fd4 ffad6fec ffad6ff0 ffad6fec 00000010  .o...o...o......
+    ffad6fe4 f71cee52 f79eacd8 00000001 00000010  R...............
+    ffad6ff4 00000001 f71cee52 00000010 00000001  ....R...........
+    ffad7004 f79eacd8 00000010 00000001 f71cf59d  ................
+    ffad7014 f74b3070 ffad7058 f717d5f5 ffad7030  p0K.Xp......0p..
+    ffad7024 ffad7030 f71cee52 f71cee4a f79eacd8  0p..R...J.......
+
+memory near r3:
+    ffad6f34 ffad6f54 ffad6f54 0000006c f74dd5a4  To..To..l.....M.
+    ffad6f44 00000000 f79ec6d8 0000000a f79eacd8  ................
+    ffad6f54 00000000 00000000 00000000 00000000  ................
+    ffad6f64 00000000 00000000 00000000 00000000  ................
+    ffad6f74 00000000 00000000 b3bb020d ffad737c  ............|s..
+    ffad6f84 f718b999 f7161020 f7161020 f79eacd8  .... ... .......
+    ffad6f94 00000010 00000010 f71cee52 f79eacd8  ........R.......
+    ffad6fa4 00000001 f71cee52 00000010 00000001  ....R...........
+    ffad6fb4 f79eacd8 00000010 00000001 f71cee52  ............R...
+    ffad6fc4 f79eacd8 ffad7018 f717d6b7 f71de064  .....p......d...
+    ffad6fd4 ffad6fec ffad6ff0 ffad6fec 00000010  .o...o...o......
+    ffad6fe4 f71cee52 f79eacd8 00000001 00000010  R...............
+    ffad6ff4 00000001 f71cee52 00000010 00000001  ....R...........
+    ffad7004 f79eacd8 00000010 00000001 f71cf59d  ................
+    ffad7014 f74b3070 ffad7058 f717d5f5 ffad7030  p0K.Xp......0p..
+    ffad7024 ffad7030 f71cee52 f71cee4a f79eacd8  0p..R...J.......
+
+memory near r4:
+    f71cee30 206f746e 66666964 6e657265 65742074  nto different te
+    f71cee40 63207473 73657361 6553002e 28705574  st cases..SetUp(
+    f71cee50 68740029 65742065 62207473 0079646f  ).the test body.
+    f71cee60 72616554 6e776f44 41002928 6d657474  TearDown().Attem
+    f71cee70 64657470 64657220 6e696665 6f697469  pted redefinitio
+    f71cee80 666f206e 73657420 61632074 00206573  n of test case .
+    f71cee90 2c000a2e 756f7920 69727420 000a6465  ..., you tried..
+    f71ceea0 64206f74 6e696665 20612065 74736574  to define a test
+    f71ceeb0 69737520 6120676e 78696620 65727574   using a fixture
+    f71ceec0 616c6320 64207373 65666669 746e6572   class different
+    f71ceed0 6f726620 6874206d 6e6f2065 75000a65   from the one..u
+    f71ceee0 20646573 6c726165 2e726569 69685420  sed earlier. Thi
+    f71ceef0 61632073 6168206e 6e657070 20666920  s can happen if 
+    f71cef00 20656874 206f7774 74786966 20657275  the two fixture 
+    f71cef10 73616c63 20736573 0a657261 6f726600  classes are..fro
+    f71cef20 6964206d 72656666 20746e65 656d616e  m different name
+
+memory near r5:
+    f79eacb8 aaaaaaaa aaaaaaaa aaaaaaaa aaaaaaaa  ................
+    f79eacc8 aaaaaaaa aaaaaaaa aaaaaaaa aaaaaaaa  ................
+    f79eacd8 f71d8394 f79eb558 bbbbbbbb bbbbbbbb  ....X...........
+    f79eace8 bbbbbbbb bbbbbbbb bbbbbbbb bbbbbbbb  ................
+    f79eacf8 bbbbbbbb bbbbbbbb bbbbbbbb bbbbbbbb  ................
+    f79ead08 bbbbbbbb bbbbbbbb bbbbbbbb bbbbbbbb  ................
+    f79ead18 bbbbbbbb bbbbbbbb bbbbbbbb bbbbbbbb  ................
+    f79ead28 bbbbbbbb bbbbbbbb bbbbbbbb bbbbbbbb  ................
+    f79ead38 bbbbbbbb bbbbbbbb bbbbbbbb bbbbbbbb  ................
+    f79ead48 bbbbbbbb bbbbbbbb bbbbbbbb bbbbbbbb  ................
+    f79ead58 bbbbbbbb bbbbbbbb bbbbbbbb bbbbbbbb  ................
+    f79ead68 bbbbbbbb bbbbbbbb bbbbbbbb bbbbbbbb  ................
+    f79ead78 bbbbbbbb bbbbbbbb bbbbbbbb bbbbbbbb  ................
+    f79ead88 bbbbbbbb bbbbbbbb bbbbbbbb bbbbbbbb  ................
+    f79ead98 bbbbbbbb bbbbbbbb bbbbbbbb bbbbbbbb  ................
+    f79eada8 bbbbbbbb bbbbbbbb bbbbbbbb bbbbbbbb  ................
+
+memory near r7:
+    ffad6fa8 f71cee52 00000010 00000001 f79eacd8  R...............
+    ffad6fb8 00000010 00000001 f71cee52 f79eacd8  ........R.......
+    ffad6fc8 ffad7018 f717d6b7 f71de064 ffad6fec  .p......d....o..
+    ffad6fd8 ffad6ff0 ffad6fec 00000010 f71cee52  .o...o......R...
+    ffad6fe8 f79eacd8 00000001 00000010 00000001  ................
+    ffad6ff8 f71cee52 00000010 00000001 f79eacd8  R...............
+    ffad7008 00000010 00000001 f71cf59d f74b3070  ............p0K.
+    ffad7018 ffad7058 f717d5f5 ffad7030 ffad7030  Xp......0p..0p..
+    ffad7028 f71cee52 f71cee4a f79eacd8 f79eacd8  R...J...........
+    ffad7038 00000000 b3bb020d 00000010 00000001  ................
+    ffad7048 00000008 00000001 f74b3070 f79eacd8  ........p0K.....
+    ffad7058 ffad70a8 f717dc77 ffffffff 00000002  .p..w...........
+    ffad7068 f74d4900 f74d4900 f71808a3 f74dd598  .IM..IM.......M.
+    ffad7078 f74dd598 f717e351 00000000 00000008  ..M.Q...........
+    ffad7088 00000001 f79eacd8 52b4d8bc 00000162  ...........Rb...
+    ffad7098 00000002 f74b39d0 f74b3070 f74dd598  .....9K.p0K...M.
+
+memory near fp:
+    ffad6f60 00000000 00000000 00000000 00000000  ................
+    ffad6f70 00000000 00000000 00000000 b3bb020d  ................
+    ffad6f80 ffad737c f718b999 f7161020 f7161020  |s...... ... ...
+    ffad6f90 f79eacd8 00000010 00000010 f71cee52  ............R...
+    ffad6fa0 f79eacd8 00000001 f71cee52 00000010  ........R.......
+    ffad6fb0 00000001 f79eacd8 00000010 00000001  ................
+    ffad6fc0 f71cee52 f79eacd8 ffad7018 f717d6b7  R........p......
+    ffad6fd0 f71de064 ffad6fec ffad6ff0 ffad6fec  d....o...o...o..
+    ffad6fe0 00000010 f71cee52 f79eacd8 00000001  ....R...........
+    ffad6ff0 00000010 00000001 f71cee52 00000010  ........R.......
+    ffad7000 00000001 f79eacd8 00000010 00000001  ................
+    ffad7010 f71cf59d f74b3070 ffad7058 f717d5f5  ....p0K.Xp......
+    ffad7020 ffad7030 ffad7030 f71cee52 f71cee4a  0p..0p..R...J...
+    ffad7030 f79eacd8 f79eacd8 00000000 b3bb020d  ................
+    ffad7040 00000010 00000001 00000008 00000001  ................
+    ffad7050 f74b3070 f79eacd8 ffad70a8 f717dc77  p0K......p..w...
+
+memory near sp:
+    ffad6ec0 00000000 f71c22d7 ffad6f54 00000000  ....."..To......
+    ffad6ed0 ffad6f54 ffad6f54 ffad6f80 ffad6f54  To..To...o..To..
+    ffad6ee0 f79eb578 f79eb578 f79eb578 f79eb584  x...x...x.......
+    ffad6ef0 f79eb584 f79eb584 f79eb584 00000003  ................
+    ffad6f00 f79eb584 f79eb584 f79eb584 f79eb584  ................
+    ffad6f10 f79eb594 f74dd5a5 00000002 ffad6f54  ......M.....To..
+    ffad6f20 ffad6f54 ffad6f78 ffad6f78 ffad6f7c  To..xo..xo..|o..
+    ffad6f30 ffad6f7c ffad6f54 ffad6f54 0000006c  |o..To..To..l...
+    ffad6f40 f74dd5a4 00000000 f79ec6d8 0000000a  ..M.............
+    ffad6f50 f79eacd8 00000000 00000000 00000000  ................
+    ffad6f60 00000000 00000000 00000000 00000000  ................
+    ffad6f70 00000000 00000000 00000000 b3bb020d  ................
+    ffad6f80 ffad737c f718b999 f7161020 f7161020  |s...... ... ...
+    ffad6f90 f79eacd8 00000010 00000010 f71cee52  ............R...
+    ffad6fa0 f79eacd8 00000001 f71cee52 00000010  ........R.......
+    ffad6fb0 00000001 f79eacd8 00000010 00000001  ................
+
+code around pc:
+    f71610e4 e51b203c e24b302c e0832102 e58d0040  < ..,0K..!..@...
+    f71610f4 e1a00002 e58d303c e58d1038 ebffff0c  ....<0..8.......
+    f7161104 e5901000 e5911008 e51b2038 e3a03000  ........8 ...0..
+    f7161114 e58d1034 e1a01002 e1a02003 e59dc034  4........ ..4...
+    f7161124 e12fff3c e51b003c e59d103c e0810100  <./.<...<.......
+    f7161134 ebfffeff e5901000 e591100c e51b203c  ............< ..
+    f7161144 e3043240 e340300f e00c0392 e1a0efcc  @2...0@.........
+    f7161154 e0223392 e1a0300d e5832000 e1a0200c  .3"..0... ... ..
+    f7161164 e1a0300e e12fff31 e51b103c e59d203c  .0..1./.<...< ..
+    f7161174 e0821101 e58d0030 e1a00001 ebfffeec  ....0...........
+    f7161184 ebff987e e59f1138 e79f1001 e2811054  ~...8.......T...
+    f7161194 e59f2130 e08f2002 e58d002c e1a00001  0!... ..,.......
+    f71611a4 e1a01002 e59d202c ebff9844 e58d0028  ...., ..D...(...
+    f71611b4 e51b003c e2800001 e50b003c eaffffc2  <.......<.......
+    f71611c4 e59f00f4 ebff9858 e3001000 e50b1040  ....X.......@...
+    f71611d4 e58d0024 e51b0040 e350000a aa000019  $...@.....P.....
+
+memory map: (fault address prefixed with --->)
+--->Fault address falls at 00000000 before any mapped regions
+    f5fdc000-f6881fff rw-         0    8a6000
+    f6a80000-f6b7ffff rw-         0    100000  [anon:libc_malloc]
+    f6b8a000-f6b8dfff r-x         0      4000  /system/lib/libnetd_client.so (BuildId: e9fc5457c6e68e0a762d9d42a58eea5d)
+    f6b8e000-f6b8efff r--      3000      1000  /system/lib/libnetd_client.so
+    f6b8f000-f6b8ffff rw-      4000      1000  /system/lib/libnetd_client.so
+    f6b90000-f6baffff r--         0     20000  /dev/__properties__
+    f6bb0000-f6bc9fff r-x         0     1a000  /system/lib/libz.so (BuildId: 022945f84f7ebabd290782714293fa15)
+    f6bca000-f6bcafff r--     19000      1000  /system/lib/libz.so
+    f6bcb000-f6bcbfff rw-     1a000      1000  /system/lib/libz.so
+    f6bcc000-f6c53fff r-x         0     88000  /system/lib/libc++.so (BuildId: f5ec22c84898e52bf00db6af0c6c6a88) (load base 0x2000)
+    f6c54000-f6c54fff ---         0      1000
+    f6c55000-f6c58fff r--     88000      4000  /system/lib/libc++.so
+    f6c59000-f6c59fff rw-     8c000      1000  /system/lib/libc++.so
+    f6c5a000-f6c5afff rw-         0      1000
+    f6c5b000-f6c69fff r-x         0      f000  /system/lib/libcutils.so (BuildId: f13def331d325db07f73e1dc81d63537)
+    f6c6a000-f6c6afff ---         0      1000
+    f6c6b000-f6c6bfff r--      f000      1000  /system/lib/libcutils.so
+    f6c6c000-f6c6cfff rw-     10000      1000  /system/lib/libcutils.so
+    f6c6d000-f6c71fff r-x         0      5000  /system/lib/libstdc++.so (BuildId: 4e36d680d931bdfdb136785d81ac9d61)
+    f6c72000-f6c72fff r--      4000      1000  /system/lib/libstdc++.so
+    f6c73000-f6c73fff rw-      5000      1000  /system/lib/libstdc++.so
+    f6c74000-f6c92fff r-x         0     1f000  /system/lib/libm.so (BuildId: 415bd24860fc7914d213f7e1c7600e1b)
+    f6c93000-f6c93fff ---         0      1000
+    f6c94000-f6c94fff r--     1f000      1000  /system/lib/libm.so
+    f6c95000-f6c95fff rw-     20000      1000  /system/lib/libm.so
+    f6c96000-f6d09fff r-x         0     74000  /system/lib/libc.so (BuildId: 914b112ab9af3305b7201f776ef60283)
+    f6d0a000-f6d0afff ---         0      1000
+    f6d0b000-f6d0efff r--     74000      4000  /system/lib/libc.so
+    f6d0f000-f6d11fff rw-     78000      3000  /system/lib/libc.so
+    f6d12000-f6d1bfff rw-         0      a000
+    f6d1c000-f6d23fff r-x         0      8000  /system/lib/liblog.so (BuildId: d60af8fd87d79b0ae1d25ca540154855)
+    f6d24000-f6d24fff r--      7000      1000  /system/lib/liblog.so
+    f6d25000-f6d25fff rw-      8000      1000  /system/lib/liblog.so
+    f6d26000-f6ffbfff r-x         0    2d6000  /data/local/tmp/libhttp.so (BuildId: 336a95bcdc72d63383a0447754cf3d8bca10c7f5)
+    f6ffc000-f6ffcfff ---         0      1000
+    f6ffd000-f700ffff r--    2d6000     13000  /data/local/tmp/libhttp.so
+    f7010000-f7018fff rw-    2e9000      9000  /data/local/tmp/libhttp.so
+    f7019000-f701afff rw-         0      2000
+    f701b000-f7089fff r-x         0     6f000  /data/local/tmp/libfoundation.so (BuildId: 0c37e059d23709dd5dc6f8b713a62591bb365e74)
+    f708a000-f708bfff r--     6e000      2000  /data/local/tmp/libfoundation.so
+    f708c000-f708cfff rw-     70000      1000  /data/local/tmp/libfoundation.so
+    f708d000-f70dcfff r-x         0     50000  /data/local/tmp/libc_liyl_malloc_debug.so (BuildId: f1c80442228dc60c6939b70d303d9d804ed00815)
+    f70dd000-f70defff r--     4f000      2000  /data/local/tmp/libc_liyl_malloc_debug.so
+    f70df000-f70dffff rw-     51000      1000  /data/local/tmp/libc_liyl_malloc_debug.so
+    f70e0000-f70e2fff r-x         0      3000  /system/lib/libdirect-coredump.so (BuildId: 481639e7186f6242bb9aa72c768929b4)
+    f70e3000-f70e3fff r--      2000      1000  /system/lib/libdirect-coredump.so
+    f70e4000-f70e4fff rw-      3000      1000  /system/lib/libdirect-coredump.so
+    f70e5000-f70e5fff rw-         0      1000  [anon:linker_alloc_vector]
+    f70e6000-f70e6fff rw-         0      1000  [anon:linker_alloc_64]
+    f70e7000-f70e7fff r--         0      1000  /proc/xlog/setfil
+    f70e8000-f70e8fff rw-         0      1000  [anon:linker_alloc_vector]
+    f70e9000-f70e9fff r--         0      1000  [anon:linker_alloc]
+    f70ea000-f70eafff r--         0      1000
+    f70eb000-f70ebfff r--         0      1000  [anon:linker_alloc]
+    f70ec000-f70ecfff rw-         0      1000  [anon:linker_alloc]
+    f70ed000-f70edfff rw-         0      1000  [anon:linker_alloc_vector]
+    f70ee000-f70eefff rw-         0      1000  [anon:linker_alloc_16]
+    f70ef000-f70effff rw-         0      1000  [anon:linker_alloc_vector]
+    f70f0000-f70f0fff rw-         0      1000  [anon:linker_alloc_32]
+    f70f1000-f70f1fff r--         0      1000  [anon:linker_alloc]
+    f70f2000-f7111fff r--         0     20000  /dev/__properties__
+    f7112000-f7112fff ---         0      1000
+    f7113000-f7114fff rw-         0      2000  [anon:thread signal stack]
+    f7115000-f7131fff r-x         0     1d000  /system/bin/linker (BuildId: 4fc0228b01c81bd9978dee6f24055449)
+    f7132000-f7132fff r--         0      1000
+    f7133000-f7133fff r--     1d000      1000  /system/bin/linker
+    f7134000-f7135fff rw-     1e000      2000  /system/bin/linker
+    f7136000-f7137fff rw-         0      2000
+    f7138000-f71d6fff r-x         0     9f000  /data/local/tmp/omx_test (BuildId: e21395cc84dd319904c74a194d3bd28190d3c7d5)
+    f71d7000-f71dafff r--     9e000      4000  /data/local/tmp/omx_test
+    f71db000-f71dbfff rw-     a2000      1000  /data/local/tmp/omx_test
+    f71dc000-f71dcfff rw-         0      1000
+    f71dd000-f71ddfff r--         0      1000
+    f71de000-f71dffff rw-         0      2000
+    f7496000-f79ecfff rw-         0    557000  [heap]
+    ff2d9000-ffad7fff rw-         0    7ff000  [stack]
+    ffff0000-ffff0fff r-x         0      1000  [vectors]
+--------- tail end of log main
+03-23 19:53:26.443 16157 16157 W DL_CURL : DL_CloseHandle:461 close OK
+03-23 19:53:26.443 16157 16157 D HTTPDownloader: node[2] destroy mHTTPComponent end
+03-23 19:53:26.443 16157 16157 D HTTPComponent: HTTPComponent deconstructor !
+03-23 19:53:26.444 16157 16157 D HTTPDownloader: node[2]calling destroyComponentInstance done
+03-23 19:53:26.444 16157 16157 D HTTPDownloader: node[2]downloader going away.
+--------- log main
+03-23 19:53:01.931 16157 16157 I DL_CURL : libcurl/7.50.1-DEV OpenSSL/1.0.1u zlib/1.2.8
+03-23 19:53:01.931 16157 16157 V malloc_debug: liyl func bool debug_initialize(const MallocDispatch *, int *):185
+03-23 19:53:01.931 16157 16157 V malloc_debug: liyl func bool debug_initialize(const MallocDispatch *, int *):196
+03-23 19:53:01.931 16157 16157 V malloc_debug: liyl func bool debug_initialize(const MallocDispatch *, int *):201
+03-23 19:53:01.933 16157 16157 V malloc_debug: liyl func bool debug_initialize(const MallocDispatch *, int *):214
+03-23 19:53:01.956 16157 16157 D DownloaderFactory: sFactoryMap type = 0 
+03-23 19:53:01.957 16157 16157 E IDownloader: key is NULL
+03-23 19:53:01.957 16157 16157 D DefaultComponent: this = 0xf7596f70 mComponent = 0xf75980b8
+03-23 19:53:01.957 16157 16157 D HTTPComponent: HTTPComponent constructor !
+03-23 19:53:01.957 16157 16157 W DL_CURL : DL_CreateHandle:416 - DLCurl:0xf7598970 create download handle
+03-23 19:53:01.957 16157 16157 D HTTPDownloader: mHandle = 0xf75980b8
+03-23 19:53:01.957 16157 16157 D LL_LoadManager: allocate download[1]
+03-23 19:53:01.958 16157 16157 D DL_CURL : proxy_path = (null)
+03-23 19:53:01.958 16157 16157 W DL_CURL : int DL_PrepareDownload(DLHandle, const char *, int, int, bool, DownloadCBFunc, void *, std::vector<std::string> &):570 http range: 1000000-4999999
+03-23 19:53:01.959 16157 16157 W DL_CURL : DL_StartDownload:630 - DLHandle:0xf7598970 start download url=http://30.96.91.171/bbb_short.ffmpeg.1920x1080.mp4.libx264_10000kbps_30fps.libfaac_stereo_192kbps_48000Hz.mp4
+03-23 19:53:01.959 16157 16157 D LL_LoadManager: node[1] compenont was DL_StateExecuting,already
+03-23 19:53:01.959 16157 16159 W DL_CURL : dl_curl_perform:190 - DLCurl:0xf7598970 curl_easy_perform start
+03-23 19:53:01.964 16157 16159 D DL_CURL : dl_curl_progress_cb:300 - DLCurl:0xf7598970 current position:1000000
+03-23 19:53:03.164 16157 16159 D DL_CURL : dl_curl_progress_cb:300 - DLCurl:0xf7598970 current position:1000000
+03-23 19:53:05.165 16157 16159 D DL_CURL : dl_curl_progress_cb:300 - DLCurl:0xf7598970 current position:1000000
+03-23 19:53:07.167 16157 16159 D DL_CURL : dl_curl_progress_cb:300 - DLCurl:0xf7598970 current position:1000000
+03-23 19:53:07.959 16157 16157 W DL_CURL : DL_StopDownload:697 - DLCurl:0xf7598970 get apiMutex start
+03-23 19:53:07.959 16157 16157 W DL_CURL : DL_StopDownload:699 - DLCurl:0xf7598970 get apiMutex end
+03-23 19:53:07.959 16157 16157 W DL_CURL : DL_StopDownload:702 - DLCurl:0xf7598970 stop download, set dlcurl->stopped=true
+03-23 19:53:07.959 16157 16157 W DL_CURL : DL_StopDownload:715 - DLCurl:0xf7598970 dlcurl->taskCond.waitRelative start
+03-23 19:53:08.168 16157 16159 W DL_CURL : dl_curl_progress_cb:309 - DLCurl:0xf7598970 download stop now
+03-23 19:53:08.170 16157 16159 W DL_CURL : dl_curl_perform:192 - DLCurl:0xf7598970 curl_easy_perform end
+03-23 19:53:08.170 16157 16159 D DL_CURL : dl_curl_thread:239 DLCurl:0xf7598970 before onEventCB()
+03-23 19:53:08.170 16157 16159 E HTTPComponent: DL_HTTP_RESPONSE_ERR_CB errCode = 1008
+03-23 19:53:08.170 16157 16159 E LL_LoadManager: node[1] compenont encounter a error 1008 
+03-23 19:53:08.172 16157 16158 D HTTPDownloader: node[1]DL_EventError
+03-23 19:53:08.172 16157 16158 D HTTPDownloader: node[1]onMessage msg DL_HTTP_RESPONSE_ERR_CB
+03-23 19:53:08.172 16157 16158 E HttpDataSource: DL_HTTP_RESPONSE_ERR_CB node[1] err = -1008
+03-23 19:53:08.174 16157 16159 D DL_CURL : dl_curl_thread:241 DLCurl:0xf7598970 after onEventCB()
+03-23 19:53:08.175 16157 16159 W DL_CURL : dl_curl_thread:249 - DLCurl:0xf7598970 aready download 1000000 Byte dlcurl->taskCond.signalAll() sended
+03-23 19:53:08.175 16157 16157 W DL_CURL : DL_StopDownload:717 - DLCurl:0xf7598970 dlcurl->taskCond.waitRelative end
+03-23 19:53:08.175 16157 16157 W DL_CURL : DL_PrepareDownload:506 - DLCurl:0xf7598970 handle busy: a download will prepare again ,start = 1000000 size=4000000 
+03-23 19:53:08.176 16157 16157 D DL_CURL : proxy_path = (null)
+03-23 19:53:08.176 16157 16157 W DL_CURL : int DL_PrepareDownload(DLHandle, const char *, int, int, bool, DownloadCBFunc, void *, std::vector<std::string> &):570 http range: 1000000-4999999
+03-23 19:53:08.177 16157 16157 W DL_CURL : DL_StartDownload:630 - DLHandle:0xf7598970 start download url=http://30.96.91.171/bbb_short.ffmpeg.1920x1080.mp4.libx264_10000kbps_30fps.libfaac_stereo_192kbps_48000Hz.mp4
+03-23 19:53:08.177 16157 16157 D LL_LoadManager: node[1] compenont was DL_StateExecuting,already
+03-23 19:53:08.177 16157 16158 D HTTPDownloader: node[1]DL_EventCmdComplete
+03-23 19:53:08.177 16157 16158 D HTTPDownloader: node[1]onMessage msg DL_HTTP_STOP_CMPL_CB
+03-23 19:53:08.181 16157 16160 W DL_CURL : dl_curl_perform:190 - DLCurl:0xf7598970 curl_easy_perform start
+03-23 19:53:08.189 16157 16160 D DL_CURL : dl_curl_progress_cb:300 - DLCurl:0xf7598970 current position:1000000
+03-23 19:53:09.388 16157 16160 D DL_CURL : dl_curl_progress_cb:300 - DLCurl:0xf7598970 current position:1000000
+03-23 19:53:11.390 16157 16160 D DL_CURL : dl_curl_progress_cb:300 - DLCurl:0xf7598970 current position:1000000
+03-23 19:53:13.392 16157 16160 D DL_CURL : dl_curl_progress_cb:300 - DLCurl:0xf7598970 current position:1000000
+03-23 19:53:14.177 16157 16157 W DL_CURL : DL_StopDownload:697 - DLCurl:0xf7598970 get apiMutex start
+03-23 19:53:14.177 16157 16157 W DL_CURL : DL_StopDownload:699 - DLCurl:0xf7598970 get apiMutex end
+03-23 19:53:14.177 16157 16157 W DL_CURL : DL_StopDownload:702 - DLCurl:0xf7598970 stop download, set dlcurl->stopped=true
+03-23 19:53:14.177 16157 16157 W DL_CURL : DL_StopDownload:715 - DLCurl:0xf7598970 dlcurl->taskCond.waitRelative start
+03-23 19:53:14.394 16157 16160 D DL_CURL : dl_curl_progress_cb:300 - DLCurl:0xf7598970 current position:1000000
+03-23 19:53:14.394 16157 16160 W DL_CURL : dl_curl_progress_cb:309 - DLCurl:0xf7598970 download stop now
+03-23 19:53:14.396 16157 16160 W DL_CURL : dl_curl_perform:192 - DLCurl:0xf7598970 curl_easy_perform end
+03-23 19:53:14.396 16157 16160 D DL_CURL : dl_curl_thread:239 DLCurl:0xf7598970 before onEventCB()
+03-23 19:53:14.396 16157 16160 E HTTPComponent: DL_HTTP_RESPONSE_ERR_CB errCode = 1008
+03-23 19:53:14.396 16157 16160 E LL_LoadManager: node[1] compenont encounter a error 1008 
+03-23 19:53:14.400 16157 16158 D HTTPDownloader: node[1]DL_EventError
+03-23 19:53:14.400 16157 16158 D HTTPDownloader: node[1]onMessage msg DL_HTTP_RESPONSE_ERR_CB
+03-23 19:53:14.400 16157 16158 E HttpDataSource: DL_HTTP_RESPONSE_ERR_CB node[1] err = -1008
+03-23 19:53:14.401 16157 16160 D DL_CURL : dl_curl_thread:241 DLCurl:0xf7598970 after onEventCB()
+03-23 19:53:14.402 16157 16160 W DL_CURL : dl_curl_thread:249 - DLCurl:0xf7598970 aready download 1000000 Byte dlcurl->taskCond.signalAll() sended
+03-23 19:53:14.402 16157 16157 W DL_CURL : DL_StopDownload:717 - DLCurl:0xf7598970 dlcurl->taskCond.waitRelative end
+03-23 19:53:14.403 16157 16158 D HTTPDownloader: node[1]DL_EventCmdComplete
+03-23 19:53:14.403 16157 16158 D HTTPDownloader: node[1]onMessage msg DL_HTTP_STOP_CMPL_CB
+03-23 19:53:14.403 16157 16157 D HTTPDownloader: node[1]DL_GetState state=0x2 !
+03-23 19:53:14.403 16157 16157 D HTTPDownloader: current DL_StateInit
+03-23 19:53:14.403 16157 16157 D HTTPDownloader: node[1]calling destroyComponentInstance
+03-23 19:53:14.403 16157 16157 D HTTPDownloader: node[1] destroy mHTTPComponent start
+03-23 19:53:14.403 16157 16157 W DL_CURL : DL_CloseHandle:433 - DLCurl:0xf7598970 get apiMutex start
+03-23 19:53:14.403 16157 16157 W DL_CURL : DL_CloseHandle:435 - DLCurl:0xf7598970 get apiMutex end
+03-23 19:53:14.406 16157 16157 W DL_CURL : DL_CloseHandle:461 close OK
+03-23 19:53:14.406 16157 16157 D HTTPDownloader: node[1] destroy mHTTPComponent end
+03-23 19:53:14.407 16157 16157 D HTTPComponent: HTTPComponent deconstructor !
+03-23 19:53:14.407 16157 16157 D HTTPDownloader: node[1]calling destroyComponentInstance done
+03-23 19:53:14.407 16157 16157 D HTTPDownloader: node[1]downloader going away.
+03-23 19:53:14.416 16157 16157 D DownloaderFactory: sFactoryMap type = 0 
+03-23 19:53:14.417 16157 16157 E IDownloader: key is NULL
+03-23 19:53:14.417 16157 16157 D DefaultComponent: this = 0xf760d4a0 mComponent = 0xf760e5e8
+03-23 19:53:14.417 16157 16157 D HTTPComponent: HTTPComponent constructor !
+03-23 19:53:14.419 16157 16157 W DL_CURL : DL_CreateHandle:416 - DLCurl:0xf760eea0 create download handle
+03-23 19:53:14.421 16157 16157 D HTTPDownloader: mHandle = 0xf760e5e8
+03-23 19:53:14.421 16157 16157 D LL_LoadManager: allocate download[2]
+03-23 19:53:14.424 16157 16157 D DL_CURL : proxy_path = (null)
+03-23 19:53:14.424 16157 16157 W DL_CURL : int DL_PrepareDownload(DLHandle, const char *, int, int, bool, DownloadCBFunc, void *, std::vector<std::string> &):570 http range: 1000000-4999999
+03-23 19:53:14.425 16157 16157 W DL_CURL : DL_StartDownload:630 - DLHandle:0xf760eea0 start download url=http://30.96.74.41/bbb_short.ffmpeg.1920x1080.mp4.libx264_10000kbps_30fps.libfaac_stereo_192kbps_48000Hz.mp4
+03-23 19:53:14.425 16157 16157 D LL_LoadManager: node[2] compenont was DL_StateExecuting,already
+03-23 19:53:14.427 16157 16162 W DL_CURL : dl_curl_perform:190 - DLCurl:0xf760eea0 curl_easy_perform start
+03-23 19:53:14.435 16157 16162 D DL_CURL : dl_curl_progress_cb:300 - DLCurl:0xf760eea0 current position:1000000
+03-23 19:53:14.458 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.458 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:14.458 16157 16161 D HTTPDownloader: node[2]Header 0xf7659228 nSize 44 nFilledLen 30 pBuffer +++++++++ HTTP/1.1 206 Partial Content
+03-23 19:53:14.458 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.458 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:14.458 16157 16161 D HTTPDownloader: node[2]Header 0xf765b4d0 nSize 44 nFilledLen 22 pBuffer +++++++++ Server: nginx/1.13.2
+03-23 19:53:14.458 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.458 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:14.458 16157 16161 D HTTPDownloader: node[2]Header 0xf765ceb0 nSize 44 nFilledLen 37 pBuffer +++++++++ Date: Fri, 23 Mar 2018 11:53:14 GMT
+03-23 19:53:14.458 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer HTTP/1.1 206 Partial Content
+03-23 19:53:14.462 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer Server: nginx/1.13.2
+03-23 19:53:14.463 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer Date: Fri, 23 Mar 2018 11:53:14 GMT
+03-23 19:53:14.470 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.470 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:14.470 16157 16161 D HTTPDownloader: node[2]Header 0xf765f110 nSize 44 nFilledLen 25 pBuffer +++++++++ Content-Type: video/mp4
+03-23 19:53:14.470 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.470 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:14.470 16157 16161 D HTTPDownloader: node[2]Header 0xf7665308 nSize 44 nFilledLen 25 pBuffer +++++++++ Content-Length: 4000000
+03-23 19:53:14.470 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.470 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:14.471 16157 16161 D HTTPDownloader: node[2]Header 0xf7666cf0 nSize 44 nFilledLen 46 pBuffer +++++++++ Last-Modified: Thu, 19 Jan 2012 05:48:56 GMT
+03-23 19:53:14.471 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer Content-Type: video/mp4
+03-23 19:53:14.471 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer Content-Length: 4000000
+03-23 19:53:14.491 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer Last-Modified: Thu, 19 Jan 2012 05:48:56 GMT
+03-23 19:53:14.494 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.499 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:14.499 16157 16161 D HTTPDownloader: node[2]Header 0xf766ac00 nSize 44 nFilledLen 24 pBuffer +++++++++ Connection: keep-alive
+03-23 19:53:14.499 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer Connection: keep-alive
+03-23 19:53:14.504 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.509 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:14.509 16157 16161 D HTTPDownloader: node[2]Header 0xf766d8b8 nSize 44 nFilledLen 25 pBuffer +++++++++ ETag: "4f17aec8-826477"
+03-23 19:53:14.509 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer ETag: "4f17aec8-826477"
+03-23 19:53:14.510 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.510 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:14.510 16157 16161 D HTTPDownloader: node[2]Header 0xf76703b8 nSize 44 nFilledLen 46 pBuffer +++++++++ Content-Range: bytes 1000000-4999999/8545399
+03-23 19:53:14.510 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.510 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:14.510 16157 16161 D HTTPDownloader: node[2]Header 0xf7671f08 nSize 44 nFilledLen 2 pBuffer +++++++++ 
+03-23 19:53:14.510 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.510 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.510 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer Content-Range: bytes 1000000-4999999/8545399
+03-23 19:53:14.511 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer 
+03-23 19:53:14.511 16157 16161 D HttpDataSource: Buffer 0xf7677fb0,pBuffer 0xf6859460
+03-23 19:53:14.520 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.520 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.520 16157 16161 D HttpDataSource: Buffer 0xf768ae20,pBuffer 0xf6830460
+03-23 19:53:14.548 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.548 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.548 16157 16161 D HttpDataSource: Buffer 0xf76a6658,pBuffer 0xf6807460
+03-23 19:53:14.573 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.574 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.574 16157 16161 D HttpDataSource: Buffer 0xf76bcf40,pBuffer 0xf67de460
+03-23 19:53:14.606 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.606 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.606 16157 16161 D HttpDataSource: Buffer 0xf76d1db8,pBuffer 0xf67b5460
+03-23 19:53:14.641 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.641 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.643 16157 16161 D HttpDataSource: Buffer 0xf76e6400,pBuffer 0xf678c460
+03-23 19:53:14.667 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.667 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.667 16157 16161 D HttpDataSource: Buffer 0xf76f48b8,pBuffer 0xf6763460
+03-23 19:53:14.696 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.696 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.696 16157 16161 D HttpDataSource: Buffer 0xf77069b0,pBuffer 0xf673a460
+03-23 19:53:14.732 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.732 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.732 16157 16161 D HttpDataSource: Buffer 0xf771a2e8,pBuffer 0xf6711460
+03-23 19:53:14.766 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.766 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.768 16157 16161 D HttpDataSource: Buffer 0xf772ce20,pBuffer 0xf66e8460
+03-23 19:53:14.791 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.791 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.791 16157 16161 D HttpDataSource: Buffer 0xf7742568,pBuffer 0xf66bf460
+03-23 19:53:14.820 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.820 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.820 16157 16161 D HttpDataSource: Buffer 0xf77573e0,pBuffer 0xf6696460
+03-23 19:53:14.852 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.852 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.853 16157 16161 D HttpDataSource: Buffer 0xf776b988,pBuffer 0xf666d460
+03-23 19:53:14.893 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.893 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.895 16157 16161 D HttpDataSource: Buffer 0xf777dbf0,pBuffer 0xf6644460
+03-23 19:53:14.913 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.913 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.913 16157 16161 D HttpDataSource: Buffer 0xf778af08,pBuffer 0xf661b460
+03-23 19:53:14.959 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.960 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.960 16157 16161 D HttpDataSource: Buffer 0xf7798220,pBuffer 0xf65f2460
+03-23 19:53:14.983 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:14.983 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:14.983 16157 16161 D HttpDataSource: Buffer 0xf77a31f8,pBuffer 0xf65c9460
+03-23 19:53:15.007 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:15.007 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:15.007 16157 16161 D HttpDataSource: Buffer 0xf77b0510,pBuffer 0xf65a0460
+03-23 19:53:15.042 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:15.042 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:15.042 16157 16161 D HttpDataSource: Buffer 0xf77c3918,pBuffer 0xf6577460
+03-23 19:53:15.080 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:15.080 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:15.080 16157 16161 D HttpDataSource: Buffer 0xf77d5b80,pBuffer 0xf654e460
+03-23 19:53:15.113 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:15.113 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:15.120 16157 16161 D HttpDataSource: Buffer 0xf77de818,pBuffer 0xf6525460
+03-23 19:53:15.137 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:15.138 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:15.138 16157 16161 D HttpDataSource: Buffer 0xf77e6be0,pBuffer 0xf64fc460
+03-23 19:53:15.173 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:15.173 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:15.176 16157 16161 D HttpDataSource: Buffer 0xf77f2d58,pBuffer 0xf64d3460
+03-23 19:53:15.199 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:15.200 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:15.200 16157 16161 D HttpDataSource: Buffer 0xf77fb9f0,pBuffer 0xf64aa460
+03-23 19:53:15.229 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:15.229 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:15.235 16157 16161 D HttpDataSource: Buffer 0xf7808438,pBuffer 0xf6481460
+03-23 19:53:15.255 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:15.255 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:15.255 16157 16161 D HttpDataSource: Buffer 0xf78119a0,pBuffer 0xf6458460
+03-23 19:53:15.267 16157 16162 W DL_CURL : dl_curl_perform:192 - DLCurl:0xf760eea0 curl_easy_perform end
+03-23 19:53:15.267 16157 16162 D HTTPComponent: DL_HTTP_RESPONSE_CMPL_CB
+03-23 19:53:15.269 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:15.269 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:15.270 16157 16161 D HttpDataSource: Buffer 0xf7818c88,pBuffer 0xf642f460
+03-23 19:53:15.270 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:15.270 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_RESPONSE_CMPL_CB
+03-23 19:53:15.271 16157 16162 D DL_CURL : dl_curl_thread:239 DLCurl:0xf760eea0 before onEventCB()
+03-23 19:53:15.271 16157 16162 E HTTPComponent: DL_HTTP_RESPONSE_ERR_CB errCode = 0
+03-23 19:53:15.271 16157 16162 D DL_CURL : dl_curl_thread:241 DLCurl:0xf760eea0 after onEventCB()
+03-23 19:53:15.271 16157 16162 W DL_CURL : dl_curl_thread:249 - DLCurl:0xf760eea0 aready download 5000000 Byte dlcurl->taskCond.signalAll() sended
+03-23 19:53:20.425 16157 16157 W DL_CURL : DL_StopDownload:697 - DLCurl:0xf760eea0 get apiMutex start
+03-23 19:53:20.425 16157 16157 W DL_CURL : DL_StopDownload:699 - DLCurl:0xf760eea0 get apiMutex end
+03-23 19:53:20.426 16157 16157 W DL_CURL : DL_StopDownload:702 - DLCurl:0xf760eea0 stop download, set dlcurl->stopped=true
+03-23 19:53:20.426 16157 16157 W DL_CURL : DL_PrepareDownload:506 - DLCurl:0xf760eea0 handle busy: a download will prepare again ,start = 1000000 size=4000000 
+03-23 19:53:20.427 16157 16157 D DL_CURL : proxy_path = (null)
+03-23 19:53:20.427 16157 16157 W DL_CURL : int DL_PrepareDownload(DLHandle, const char *, int, int, bool, DownloadCBFunc, void *, std::vector<std::string> &):570 http range: 1000000-4999999
+03-23 19:53:20.428 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.428 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_STOP_CMPL_CB
+03-23 19:53:20.432 16157 16157 W DL_CURL : DL_StartDownload:630 - DLHandle:0xf760eea0 start download url=http://30.96.74.41/bbb_short.ffmpeg.1920x1080.mp4.libx264_10000kbps_30fps.libfaac_stereo_192kbps_48000Hz.mp4
+03-23 19:53:20.432 16157 16157 D LL_LoadManager: node[2] compenont was DL_StateExecuting,already
+03-23 19:53:20.433 16157 16163 W DL_CURL : dl_curl_perform:190 - DLCurl:0xf760eea0 curl_easy_perform start
+03-23 19:53:20.437 16157 16163 D DL_CURL : dl_curl_progress_cb:300 - DLCurl:0xf760eea0 current position:1000000
+03-23 19:53:20.466 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.466 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:20.466 16157 16161 D HTTPDownloader: node[2]Header 0xf7837400 nSize 44 nFilledLen 30 pBuffer +++++++++ HTTP/1.1 206 Partial Content
+03-23 19:53:20.466 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.466 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:20.466 16157 16161 D HTTPDownloader: node[2]Header 0xf78396a8 nSize 44 nFilledLen 22 pBuffer +++++++++ Server: nginx/1.13.2
+03-23 19:53:20.466 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.466 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:20.466 16157 16161 D HTTPDownloader: node[2]Header 0xf783b088 nSize 44 nFilledLen 37 pBuffer +++++++++ Date: Fri, 23 Mar 2018 11:53:20 GMT
+03-23 19:53:20.466 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.466 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:20.466 16157 16161 D HTTPDownloader: node[2]Header 0xf783d2e8 nSize 44 nFilledLen 25 pBuffer +++++++++ Content-Type: video/mp4
+03-23 19:53:20.466 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.466 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]Header 0xf783ecc0 nSize 44 nFilledLen 25 pBuffer +++++++++ Content-Length: 4000000
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]Header 0xf78406a8 nSize 44 nFilledLen 46 pBuffer +++++++++ Last-Modified: Thu, 19 Jan 2012 05:48:56 GMT
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]Header 0xf7842080 nSize 44 nFilledLen 24 pBuffer +++++++++ Connection: keep-alive
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]Header 0xf7843a58 nSize 44 nFilledLen 25 pBuffer +++++++++ ETag: "4f17aec8-826477"
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]Header 0xf7845440 nSize 44 nFilledLen 46 pBuffer +++++++++ Content-Range: bytes 1000000-4999999/8545399
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_HEADER_CB
+03-23 19:53:20.467 16157 16161 D HTTPDownloader: node[2]Header 0xf7846e00 nSize 44 nFilledLen 2 pBuffer +++++++++ 
+03-23 19:53:20.467 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer HTTP/1.1 206 Partial Content
+03-23 19:53:20.475 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer Server: nginx/1.13.2
+03-23 19:53:20.476 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer Date: Fri, 23 Mar 2018 11:53:20 GMT
+03-23 19:53:20.486 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer Content-Type: video/mp4
+03-23 19:53:20.494 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer Content-Length: 4000000
+03-23 19:53:20.495 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer Last-Modified: Thu, 19 Jan 2012 05:48:56 GMT
+03-23 19:53:20.500 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer Connection: keep-alive
+03-23 19:53:20.503 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer ETag: "4f17aec8-826477"
+03-23 19:53:20.507 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer Content-Range: bytes 1000000-4999999/8545399
+03-23 19:53:20.515 16157 16161 D HttpDataSource: node[2] free tmpBuf->pBuffer 
+03-23 19:53:20.523 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.523 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.527 16157 16161 D HttpDataSource: Buffer 0xf7858998,pBuffer 0xf6406460
+03-23 19:53:20.533 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.533 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.533 16157 16161 D HttpDataSource: Buffer 0xf785fcf8,pBuffer 0xf63dd460
+03-23 19:53:20.558 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.558 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.558 16157 16161 D HttpDataSource: Buffer 0xf7873b08,pBuffer 0xf63b4460
+03-23 19:53:20.586 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.586 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.587 16157 16161 D HttpDataSource: Buffer 0xf7888ab8,pBuffer 0xf638b460
+03-23 19:53:20.615 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.615 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.616 16157 16161 D HttpDataSource: Buffer 0xf78993e8,pBuffer 0xf6362460
+03-23 19:53:20.646 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.646 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.646 16157 16161 D HttpDataSource: Buffer 0xf78a79d8,pBuffer 0xf6339460
+03-23 19:53:20.674 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.674 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.674 16157 16161 D HttpDataSource: Buffer 0xf78b4e28,pBuffer 0xf6310460
+03-23 19:53:20.699 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.699 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.699 16157 16161 D HttpDataSource: Buffer 0xf78c1828,pBuffer 0xf62e7460
+03-23 19:53:20.726 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.726 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.727 16157 16161 D HttpDataSource: Buffer 0xf78cf548,pBuffer 0xf62be460
+03-23 19:53:20.752 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.752 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.752 16157 16161 D HttpDataSource: Buffer 0xf78e3f58,pBuffer 0xf6295460
+03-23 19:53:20.794 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.794 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.802 16157 16161 D HttpDataSource: Buffer 0xf78f7020,pBuffer 0xf626c460
+03-23 19:53:20.821 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.821 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.825 16157 16161 D HttpDataSource: Buffer 0xf78fe380,pBuffer 0xf6243460
+03-23 19:53:20.849 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.849 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.849 16157 16161 D HttpDataSource: Buffer 0xf7909d60,pBuffer 0xf621a460
+03-23 19:53:20.891 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.891 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.891 16157 16161 D HttpDataSource: Buffer 0xf791c9d0,pBuffer 0xf61f1460
+03-23 19:53:20.919 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.919 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.919 16157 16161 D HttpDataSource: Buffer 0xf792d300,pBuffer 0xf61c8460
+03-23 19:53:20.949 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:20.949 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:20.949 16157 16161 D HttpDataSource: Buffer 0xf79395b0,pBuffer 0xf619f460
+03-23 19:53:22.248 16157 16163 D DL_CURL : dl_curl_progress_cb:300 - DLCurl:0xf760eea0 current position:3513728
+03-23 19:53:22.288 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:22.288 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:22.288 16157 16161 D HttpDataSource: Buffer 0xf794b950,pBuffer 0xf6176460
+03-23 19:53:22.319 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:22.319 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:22.331 16157 16161 D HttpDataSource: Buffer 0xf7954ff0,pBuffer 0xf614d460
+03-23 19:53:22.353 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:22.353 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:22.354 16157 16161 D HttpDataSource: Buffer 0xf795c350,pBuffer 0xf6124460
+03-23 19:53:22.371 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:22.372 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:22.372 16157 16161 D HttpDataSource: Buffer 0xf79659f0,pBuffer 0xf60fb460
+03-23 19:53:22.459 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:22.459 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:22.459 16157 16161 D HttpDataSource: Buffer 0xf7973710,pBuffer 0xf60d2460
+03-23 19:53:22.485 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:22.486 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:22.486 16157 16161 D HttpDataSource: Buffer 0xf7983770,pBuffer 0xf60a9460
+03-23 19:53:22.515 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:22.515 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:22.515 16157 16161 D HttpDataSource: Buffer 0xf799b330,pBuffer 0xf6080460
+03-23 19:53:22.544 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:22.544 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:22.544 16157 16161 D HttpDataSource: Buffer 0xf79b2620,pBuffer 0xf6057460
+03-23 19:53:22.567 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:22.567 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:22.567 16157 16161 D HttpDataSource: Buffer 0xf79c40f0,pBuffer 0xf602e460
+03-23 19:53:22.591 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:22.591 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:22.591 16157 16161 D HttpDataSource: Buffer 0xf79d5bc0,pBuffer 0xf6005460
+03-23 19:53:22.614 16157 16163 W DL_CURL : dl_curl_perform:192 - DLCurl:0xf760eea0 curl_easy_perform end
+03-23 19:53:22.614 16157 16163 D HTTPComponent: DL_HTTP_RESPONSE_CMPL_CB
+03-23 19:53:22.615 16157 16163 D DL_CURL : dl_curl_thread:239 DLCurl:0xf760eea0 before onEventCB()
+03-23 19:53:22.615 16157 16163 E HTTPComponent: DL_HTTP_RESPONSE_ERR_CB errCode = 0
+03-23 19:53:22.615 16157 16163 D DL_CURL : dl_curl_thread:241 DLCurl:0xf760eea0 after onEventCB()
+03-23 19:53:22.615 16157 16163 W DL_CURL : dl_curl_thread:249 - DLCurl:0xf760eea0 aready download 5000000 Byte dlcurl->taskCond.signalAll() sended
+03-23 19:53:22.616 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:22.616 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_FTBD_CB
+03-23 19:53:22.616 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:22.616 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_RESPONSE_CMPL_CB
+03-23 19:53:22.616 16157 16161 D HttpDataSource: Buffer 0xf79e0dc8,pBuffer 0xf5fdc460
+03-23 19:53:26.432 16157 16157 W DL_CURL : DL_StopDownload:697 - DLCurl:0xf760eea0 get apiMutex start
+03-23 19:53:26.432 16157 16157 W DL_CURL : DL_StopDownload:699 - DLCurl:0xf760eea0 get apiMutex end
+03-23 19:53:26.432 16157 16157 W DL_CURL : DL_StopDownload:702 - DLCurl:0xf760eea0 stop download, set dlcurl->stopped=true
+03-23 19:53:26.433 16157 16157 D HTTPDownloader: node[2]DL_GetState state=0x2 !
+03-23 19:53:26.433 16157 16157 D HTTPDownloader: current DL_StateInit
+03-23 19:53:26.433 16157 16157 D HTTPDownloader: node[2]calling destroyComponentInstance
+03-23 19:53:26.433 16157 16157 D HTTPDownloader: node[2] destroy mHTTPComponent start
+03-23 19:53:26.433 16157 16157 W DL_CURL : DL_CloseHandle:433 - DLCurl:0xf760eea0 get apiMutex start
+03-23 19:53:26.433 16157 16157 W DL_CURL : DL_CloseHandle:435 - DLCurl:0xf760eea0 get apiMutex end
+03-23 19:53:26.434 16157 16161 D HTTPDownloader: node[2]DL_EventCmdComplete
+03-23 19:53:26.434 16157 16161 D HTTPDownloader: node[2]onMessage msg DL_HTTP_STOP_CMPL_CB
+03-23 19:53:26.443 16157 16157 W DL_CURL : DL_CloseHandle:461 close OK
+03-23 19:53:26.443 16157 16157 D HTTPDownloader: node[2] destroy mHTTPComponent end
+03-23 19:53:26.443 16157 16157 D HTTPComponent: HTTPComponent deconstructor !
+03-23 19:53:26.444 16157 16157 D HTTPDownloader: node[2]calling destroyComponentInstance done
+03-23 19:53:26.444 16157 16157 D HTTPDownloader: node[2]downloader going away.
+
+Tombstone written to: /data/tombstones/tombstone_00

@@ -1,0 +1,12 @@
+1,sh liyl_runtest.sh
+
+#if step 1 return error then 
+2,sh debug.sh
+
+#if step 2 don't expose problem
+3,sh gdb_server.sh
+
+#if step 3 is Incapable
+4, valgrind
+
+
