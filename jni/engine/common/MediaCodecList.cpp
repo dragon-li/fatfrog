@@ -84,6 +84,17 @@ sp<IMediaCodecList> MediaCodecList::getLocalInstance() {
     return sCodecList;
 }
 
+// static
+void  MediaCodecList::destoryLocalInstance() {
+    Mutex::Autolock autoLock(sInitMutex);
+
+    if (sCodecList != NULL) {
+		sCodecList.clear();
+    }
+
+}
+
+
 MediaCodecList::MediaCodecList()
     : mInitCheck(NO_INIT),
       mUpdate(false),
@@ -106,7 +117,7 @@ void MediaCodecList::parseTopLevelXMLFile(const char *codecs_xml, bool ignore_er
           "name",
           "OMX.liyl.aac.decoder",
           "type",
-          "audio/aac",
+          "audio/mp4a-latm",
           "name",
           "OMX.liyl.h264.decoder",
           "type",

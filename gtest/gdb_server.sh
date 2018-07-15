@@ -12,18 +12,18 @@ if [ -n $APP_BIN_NAME ] ;then
 fi
 SO_LIB_DIR=$2
 if [ -n $SO_LIB_DIR ] ;then
-	SO_LIB_DIR=/home/liyl/source/fatfrog/gtest/obj/local/armeabi-v7a
+	SO_LIB_DIR=/home/liyl/sourse/fatfrog/gtest/obj/local/armeabi-v7a
 	echo "defalt so_lib_dir = $SO_LIB_DIR"
 fi
 echo $SO_LIB_DIR
-MY_NDK_BIN_DIR=/home/zhixinlyl/android_env/android-ndk-r10e/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin
+MY_NDK_BIN_DIR=/home/liyl/liyl/android_env/android-ndk-r10e/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin
 export MYPORT=8825
 #adb shell LD_LIBRARY_PATH=/data/local/tmp  $MOBILE_DIR/gdbserver :$MYPORT $MOBILE_DIR/$APP_BIN_NAME --gtest_filter=UT_StrongPointer.test_0&
 #adb shell LD_LIBRARY_PATH=/data/local/tmp  $MOBILE_DIR/gdbserver :$MYPORT $MOBILE_DIR/$APP_BIN_NAME --gtest_filter=SharedBufferTest.TestEditResize &
 #adb shell LD_LIBRARY_PATH=/data/local/tmp  $MOBILE_DIR/gdbserver :$MYPORT $MOBILE_DIR/$APP_BIN_NAME --gtest_filter=AtomicTest.TestMultThreadAcquireOrg&
 #adb shell LD_LIBRARY_PATH=/data/local/tmp  $MOBILE_DIR/gdbserver :$MYPORT $MOBILE_DIR/$APP_BIN_NAME --gtest_filter=AtomicTest.TestMultThreadAcquireAtomic&
-echo "adb shell LD_LIBRARY_PATH=/data/local/tmp  $MOBILE_DIR/gdbserver :$MYPORT $MOBILE_DIR/$APP_BIN_NAME --gtest_filter=MallocDebugTest.* &"
-adb shell LD_LIBRARY_PATH=/data/local/tmp  $MOBILE_DIR/gdbserver :$MYPORT $MOBILE_DIR/$APP_BIN_NAME --gtest_filter=HttpDataSourceTest.*&
+echo "adb shell LD_LIBRARY_PATH=/data/local/tmp  $MOBILE_DIR/gdbserver :$MYPORT $MOBILE_DIR/$APP_BIN_NAME --gtest_filter=MediaCodecListTest.* &"
+adb shell LD_LIBRARY_PATH=/data/local/tmp  $MOBILE_DIR/gdbserver :$MYPORT $MOBILE_DIR/$APP_BIN_NAME --gtest_filter=MediaCodecListTest.*&
 sleep 5
 echo $MY_NDK_BIN_DIR
 $MY_NDK_BIN_DIR/arm-linux-androideabi-gdb  --write -l 360000 $SO_LIB_DIR/$APP_BIN_NAME  -x gdb_cmd.sh

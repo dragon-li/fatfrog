@@ -62,6 +62,8 @@ public:
 
     // to be used by MediaPlayerService alone
     static sp<IMediaCodecList> getLocalInstance();
+	// release global varying
+    static void destoryLocalInstance();
 
     // only to be used by getLocalInstance
     static void *profilerThreadWrapper(void * /*arg*/);

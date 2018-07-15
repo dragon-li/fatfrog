@@ -90,7 +90,7 @@ LOCAL_SRC_FILES += $(MY_CPP_LIST:$(LOCAL_PATH)/%=%)
 LOCAL_STATIC_LIBRARIES += googletest_main \
                           cpufeatures
 
-LOCAL_SHARED_LIBRARIES += libfoundation libhttp libnuplayer
+LOCAL_SHARED_LIBRARIES += libfoundation libhttp libomx libnuplayer
 
 LOCAL_LDLIBS += -llog
 
