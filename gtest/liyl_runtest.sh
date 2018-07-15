@@ -22,7 +22,7 @@ fi
 echo [==========] upload files
 adb shell rm -rf /data/local/tmp/
 adb shell mkdir -p  /data/local/tmp/
-adb push libs/armeabi-v7a/* /data/local/tmp/
+adb push libs/armeabi-v7a/ /data/local/tmp/
 adb shell sync
 
 echo [==========] run tests
@@ -50,6 +50,6 @@ adb shell setprop libc.debug.malloc.program /data/local/tmp/omx_test
 #adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=MallocTest.TestMalloc5"
 #adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=MallocDebugConfigTest.*"
 #adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=MallocDebugTest.*"
-#adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=HttpDownloaderTest.*"
-adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=HttpDataSourceTest.*"
+adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=HttpDownloaderTest.*"
+#adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=HttpDataSourceTest.*"
 

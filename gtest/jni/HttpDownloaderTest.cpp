@@ -39,9 +39,9 @@ TEST_F(HttpDownloaderTest, test9) { // startloading
     DataSpec* dataspec[NODE_NUM]= {0,};
     DummyObserver* observers[NODE_NUM]= {0,};
     char* tmp = (char*)malloc(512);
-    //sprintf(tmp,"%s","http://www.baidu.com");
+    sprintf(tmp,"%s","http://www.baidu.com");
 	//wlan
-    sprintf(tmp,"%s","http://30.96.91.171/bbb_short.ffmpeg.1920x1080.mp4.libx264_10000kbps_30fps.libfaac_stereo_192kbps_48000Hz.mp4");
+    //sprintf(tmp,"%s","http://30.96.91.171/bbb_short.ffmpeg.1920x1080.mp4.libx264_10000kbps_30fps.libfaac_stereo_192kbps_48000Hz.mp4");
     char* userAgent = (char*)malloc(64);
     sprintf(userAgent,"%s","User-Agent: Android6.0");
     HTTPDownloadStatusInfo info;

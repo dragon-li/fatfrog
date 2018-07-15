@@ -31,6 +31,12 @@ LOCAL_SRC_FILES := ../../obj/local/armeabi-v7a/libhttp.so
 include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE := libomx
+LOCAL_SRC_FILES := ../../obj/local/armeabi-v7a/libomx.so
+include $(PREBUILT_SHARED_LIBRARY)
+
+
+include $(CLEAR_VARS)
 LOCAL_MODULE := libnuplayer
 LOCAL_SRC_FILES := ../../obj/local/armeabi-v7a/libnuplayer.so
 include $(PREBUILT_SHARED_LIBRARY)
