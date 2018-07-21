@@ -111,23 +111,28 @@ void MediaCodecList::parseTopLevelXMLFile(const char *codecs_xml, bool ignore_er
     //TODO
     /* parse xml start*/
     startElementHandler("Decoders",NULL);
-    //<MediaCodec name="OMX.google.mpeg4.decoder" type="video/mp4v-es" />
     //<MediaCodec name="OMX.google.h264.decoder" type="video/avc" />
-    static const char* MediaCodecXml[] =  {
-          "name",
-          "OMX.liyl.aac.decoder",
-          "type",
-          "audio/mp4a-latm",
+
+    static const char* h264DecoderXml[] =  {
           "name",
           "OMX.liyl.h264.decoder",
           "type",
           "video/avc",
           NULL
     };
-    startElementHandler("MediaCodec",MediaCodecXml);
-    
-
+    startElementHandler("MediaCodec",h264DecoderXml);
     endElementHandler("MediaCodec");
+
+    static const char* aacDecoderXml[] =  {
+          "name",
+          "OMX.liyl.aac.decoder",
+          "type",
+          "audio/mp4a-latm",
+          NULL
+    };
+    startElementHandler("MediaCodec",aacDecoderXml);
+    endElementHandler("MediaCodec");
+
     endElementHandler("Decoders");
 
     /* parse xml end*/
@@ -506,6 +511,7 @@ status_t MediaCodecList::addMediaCodecFromAttributes(
         }
     } else {
         // new codec
+		LLOGV("new codec_name %s binding a MediaCodecInfo",name);
         mCurrentInfo = new MediaCodecInfo(name, encoder, type);
         // The next step involves trying to load the codec, which may
         // fail.  Only list the codec if this succeeds.
@@ -601,6 +607,7 @@ status_t MediaCodecList::QuerryCapabilities(
         // For audio, level is ignored.
         for (OMX_U32 index = 0; index < ARRAY_SIZE(aacSupportedProfiles) ; ++index) {
             builder->addProfileLevel(aacSupportedProfiles[index].mProfile, 0 /* level */);
+            builder->addColorFormat(OMX_COLOR_FormatUnused);//For audio ,color_format ignored.
         }
 
     }

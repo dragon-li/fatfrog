@@ -9,7 +9,7 @@ cd ./gtest/
 rm -rf obj/
 echo [==========] build tests
 
-#$NDK/ndk-build NDK_DEBUG=1 -C ../jni/ -B
+$NDK/ndk-build NDK_DEBUG=1 -C ../jni/
 $NDK/ndk-build NDK_DEBUG=1 -C ./jni/ -B
 
 

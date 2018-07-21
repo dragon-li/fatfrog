@@ -47,6 +47,7 @@ LIBLOG_ABI_PUBLIC int __liyl_log_buf_write(int bufID, int prio, const char *tag,
 #if defined(__ANDROID__)
     if(prio == LIYL_LOG_FATAL){
         //TODO FIXME
+        __android_log_write(ANDROID_LOG_ERROR,tag,msg);
     }else if(prio == LIYL_LOG_VERBOSE) {
         __android_log_write(ANDROID_LOG_VERBOSE,tag,msg);
     }else if(prio == LIYL_LOG_INFO) {
