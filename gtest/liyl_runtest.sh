@@ -24,6 +24,8 @@ adb shell rm -rf /data/local/tmp/
 adb shell mkdir -p  /data/local/tmp/
 adb push ../obj/local/armeabi-v7a/libc_liyl_malloc_debug.so /data/local/tmp/
 adb push ../obj/local/armeabi-v7a/libfoundation.so /data/local/tmp/
+adb push ../obj/local/armeabi-v7a/lib_soft_avcdec.so /data/local/tmp/
+adb push ../obj/local/armeabi-v7a/lib_soft_aacdec.so /data/local/tmp/
 adb push ../obj/local/armeabi-v7a/libhttp.so /data/local/tmp/
 adb push ../obj/local/armeabi-v7a/libomx.so /data/local/tmp/
 adb push ../obj/local/armeabi-v7a/libnuplayer.so  /data/local/tmp/
@@ -59,5 +61,6 @@ adb shell setprop libc.debug.malloc.program /data/local/tmp/omx_test
 #adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=MallocDebugTest.*"
 #adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=HttpDownloaderTest.*"
 #adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=HttpDataSourceTest.*"
-adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=MediaCodecListTest.*"
+#adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=MediaCodecListTest.*"
+adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=MediaCodecTest.*"
 

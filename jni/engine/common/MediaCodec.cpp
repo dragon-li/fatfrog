@@ -840,6 +840,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                     for (size_t i = 0; i < numBuffers; ++i) {
                         BufferInfo info;
                         info.mBufferID = portDesc->bufferIDAt(i);
+						info.mOwnedByClient = false;
                         info.mData = portDesc->bufferAt(i);
 
                         buffers->push_back(info);

@@ -115,7 +115,7 @@ void MediaCodecList::parseTopLevelXMLFile(const char *codecs_xml, bool ignore_er
 
     static const char* h264DecoderXml[] =  {
           "name",
-          "OMX.liyl.h264.decoder",
+          "OMX.google.h264.decoder",
           "type",
           "video/avc",
           NULL
@@ -125,7 +125,7 @@ void MediaCodecList::parseTopLevelXMLFile(const char *codecs_xml, bool ignore_er
 
     static const char* aacDecoderXml[] =  {
           "name",
-          "OMX.liyl.aac.decoder",
+          "OMX.google.aac.decoder",
           "type",
           "audio/mp4a-latm",
           NULL

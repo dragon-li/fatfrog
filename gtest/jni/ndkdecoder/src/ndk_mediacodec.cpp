@@ -190,9 +190,9 @@ static status_t doShutDown(void* obj) {
 status_t NdkMediaCodec_init(NdkMediaCodec* me) {
     pthread_mutex_init(&(me->mLock), NULL);    
     me->mWindow       = NULL;    
-    me->mCodec        = NULL;
-    me->mMediaFormat  = NULL;
-    me->mLooper       = NULL;
+    //me->mCodec        = NULL;
+    //me->mMediaFormat  = NULL;
+    //me->mLooper       = NULL;
     me->mWidth        = -1;
     me->mHeight       = -1;
     me->mFps          = -1;
@@ -211,9 +211,9 @@ status_t NdkMediaCodec_init(NdkMediaCodec* me) {
 status_t NdkMediaCodec_destroy(NdkMediaCodec* me) {
     pthread_mutex_destroy(&(me->mLock));
     me->mWindow       = NULL;    
-    me->mCodec        = NULL;
-    me->mMediaFormat  = NULL;
-    me->mLooper       = NULL;
+    //me->mCodec        = NULL;
+    //me->mMediaFormat  = NULL;
+    //me->mLooper       = NULL;
     me->mWidth        = -1;
     me->mHeight       = -1;
     me->mFps          = -1;

@@ -194,6 +194,7 @@ OMXNodeInstance::OMXNodeInstance(
     mQueriedProhibitedExtensions(false),
     mBufferIDCount(0)
 {
+	mName = strdup(name);
     mNumPortBuffers[0] = 0;
     mNumPortBuffers[1] = 0;
 }

@@ -33,6 +33,7 @@ class MediaCodecTest : public ::testing::Test {
 //#undef LIYL_DEBUG
 #define LIYL_DEBUG
 
+
 typedef struct NdkDecoderContext {
 	NdkMediaCodec  *dec;
 	int64_t        curDts;
@@ -181,7 +182,7 @@ static int ndkDecoder_init(void *ctx)
 {
 	NdkDecoderContext * ndkDecoderContext = (NdkDecoderContext*)(ctx);
 	setUp(ndkDecoderContext);
-	NdkMediaCodec* decoder = (NdkMediaCodec*)malloc(sizeof(NdkMediaCodec));
+	NdkMediaCodec* decoder = new NdkMediaCodec;
 	ndkDecoderContext->frameWidth    = 1920;
 	ndkDecoderContext->frameHeight   = 1080;
 	ndkDecoderContext->frameRate     = 24;
@@ -206,8 +207,7 @@ static int ndkDecoder_init(void *ctx)
 		}
 		ret = NdkMediaCodec_setup(decoder,NULL,frameWidth,frameHeight,frameRate,bitRate,outdata,nal_length_size);
 		if(ret != OK) {
-			free(decoder);
-			decoder = NULL;
+			delete decoder;
 		}
 		free(outdata);
 		outdata = NULL;
@@ -270,8 +270,7 @@ static int ndkDecoder_close(void *ctx)
 		if( ret == OK) {
 			NdkMediaCodec_destroy(decoder);
 		}
-		free(decoder);
-		decoder = NULL;
+		delete decoder;
 		ndkDecoderContext->dec = NULL;
 	}else {
 		LLOGE("decoder was destroyed"); 
