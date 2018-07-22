@@ -24,6 +24,7 @@
 
 #include "../../omx/api/IOMX.h"
 #include "MediaCodecInfo.h"
+#include "MediaWindow.h"
 #include "../../foundation/media/include/AHandler.h"
 #include "../../foundation/system/core/utils/ColorUtils.h"
 #include "../../common/include/HardwareAPI.h"
@@ -33,7 +34,6 @@
 LIYL_NAMESPACE_START
 
 struct ABuffer;
-struct MediaWindow; 
 
 struct CodecBase : public AHandler, /* static */ ColorUtils {
     enum {

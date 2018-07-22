@@ -24,8 +24,10 @@
 extern "C" {
 #endif
 
-struct NativeCrypto;
-typedef struct NativeCrypto MediaCrypto;
+struct LNativeCrypto {
+    void* crypto;
+};
+typedef struct LNativeCrypto MediaCrypto;
 
 #ifdef __cplusplus
 } // extern "C"

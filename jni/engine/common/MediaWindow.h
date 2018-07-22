@@ -22,8 +22,10 @@
 extern "C" {
 #endif
 
-struct ANativeWindow;
-typedef struct ANativeWindow MediaWindow;
+struct LNativeWindow {
+     void* window;
+};
+typedef struct LNativeWindow MediaWindow;
 
 #ifdef __cplusplus
 };

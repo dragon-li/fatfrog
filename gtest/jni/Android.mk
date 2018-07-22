@@ -5,6 +5,9 @@ USER_MALLOC_DEBUG := 1
 #ENABLE_DEBUG_MALLOC_TEST := !USER_LIBC
 #ENABLE_DEBUG_MALLOC_TEST := 1
 
+
+ENABLE_DEBUG_NDKDECODER_TEST := 1
+
 ifeq ($(USER_LIBC),1)
 include $(CLEAR_VARS)
 LOCAL_MODULE := libc_static_liyl_debug
@@ -83,6 +86,12 @@ LOCAL_SRC_FILES +=  ../../jni/libc_bionic/libc_init_common.cpp     \
 					../../jni/libc_bionic/malloc_common.cpp
 endif
 endif
+
+ifeq ($(ENABLE_DEBUG_NDKDECODER_TEST),1)
+MY_CPP_LIST += $(wildcard $(LOCAL_PATH)/ndkdecoder/src/*.cpp)
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/ndkdecoder/include
+endif
+
 
 
 LOCAL_MODULE := omx_test

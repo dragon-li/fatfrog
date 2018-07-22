@@ -15,12 +15,12 @@
  */
 
 #ifndef LIYL_MEDIA_CODEC_H_
-
 #define LIYL_MEDIA_CODEC_H_
 
 #include "MediaCodecInfo.h"
 #include "../../foundation/media/include/AHandler.h"
 #include "../../foundation/system/core/utils/Vector.h"
+#include "../../foundation/system/core/utils/List.h"
 #include "MediaWindow.h"
 #include "MediaCrypto.h"
 
