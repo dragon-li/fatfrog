@@ -3030,7 +3030,7 @@ void ACodec::BaseState::onInputBufferFilled(const sp<AMessage> &msg) {
                 if (flags & OMX_BUFFERFLAG_CODECCONFIG) {
                     LLOGV("[%s] calling emptyBuffer %u w/ codec specific data",
                          mCodec->mComponentName.c_str(), bufferID);
-                    hexdump(buffer->data(), buffer->size(), 4u,NULL); 
+                    //hexdump(buffer->data(), buffer->size(), 4u,NULL);
                 } else if (flags & OMX_BUFFERFLAG_EOS) {
                     LLOGV("[%s] calling emptyBuffer %u w/ EOS",
                          mCodec->mComponentName.c_str(), bufferID);
@@ -3045,8 +3045,8 @@ void ACodec::BaseState::onInputBufferFilled(const sp<AMessage> &msg) {
                 stats.mFillBufferDoneTimeUs = -1ll;
                 mCodec->mBufferStats.add(timeUs, stats);
 #endif
-               //TODO  try to submit an output buffer for each input buffer
-			   LLOGW("TODO try to submit an output buffer for each input buffer");
+                //TODO  try to submit an output buffer for each input buffer
+                LLOGW("TODO try to submit an output buffer for each input buffer");
 
                 status_t err2 = OK;
                 err2 = mCodec->mOMX->emptyBuffer(

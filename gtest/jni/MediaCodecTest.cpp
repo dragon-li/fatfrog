@@ -286,7 +286,7 @@ static int getNextNal(NdkDecoderContext *me,uint8_t* dataBase) {
     me->readPos += me->nalSize;
     me->pkt      = dataBase + me->pktOffset;
     me->nalSize  = 0;
-    if(me->readPos == 0) {
+    if(me->pktOffset == 0) {
         fseek(me->fpInput, me->readPos, SEEK_SET);
         int ret = fread(me->pkt, 1, PKTMAXSIZE, me->fpInput);
         LLOGD("fread ret = %d",ret);
@@ -315,7 +315,7 @@ static int getNextNal(NdkDecoderContext *me,uint8_t* dataBase) {
     me->nalSize   = 0;
     pkt = me->pkt;
     remainder = PKTMAXSIZE-me->pktOffset-4;
-    //LLOGD(" me->pktOffset = %d  remainder = %d ",me->pktOffset,remainder);
+    LLOGD(" me->pktOffset = %d  remainder = %d ",me->pktOffset,remainder);
     for(int i = startCode; i < remainder; i++) {
         if(pkt[i] == 0 && pkt[i+1] == 0 && pkt[i+2] == 1 ) {
             me->nalSize = i;

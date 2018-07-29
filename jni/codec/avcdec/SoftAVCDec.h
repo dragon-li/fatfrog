@@ -21,7 +21,6 @@
 #include "../../omx/SoftVideoDecoderOMXComponent.h"
 #include <sys/time.h>
 
-#define FILE_DUMP_ENABLE
 LIYL_NAMESPACE_START
 
 /** Number of entries in the time-stamp array */
