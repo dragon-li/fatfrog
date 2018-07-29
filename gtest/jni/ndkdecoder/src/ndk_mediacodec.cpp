@@ -9,6 +9,7 @@
 #include "../../../../jni/foundation/media/include/ADebug.h"
 #include "../../../../jni/foundation/media/include/ABuffer.h"
 #include "../../../../jni/common/include/MediaErrors.h"
+#include "../../../../jni/engine/common/MediaCodecList.h"
 
 LIYL_NAMESPACE_START
 
@@ -40,6 +41,7 @@ const char* LMEDIAFORMAT_KEY_CSD    = "csd-0";
 
 static status_t doSetup(void* obj) {
     NdkMediaCodec* me = (NdkMediaCodec*)obj;
+	MediaCodecList::getLocalInstance();
     status_t ret = OK;
 	me->mLooper  = new ALooper;
     me->mLooper->setName("NDK MediaCodec_looper");
@@ -60,7 +62,7 @@ static status_t doSetup(void* obj) {
 
     me->mCodec = coder;
     me->mMediaFormat = new AMessage;
-	sp<ABuffer> csd  = new ABuffer(me->mCsd,me->mCsdSize);
+	sp<ABuffer> csd  = ABuffer::CreateAsCopy(me->mCsd,me->mCsdSize);
     me->mMediaFormat->setString(LMEDIAFORMAT_KEY_MIME,"video/avc");
     me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_WIDTH,me->mWidth);
     me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_HEIGHT,me->mHeight);
@@ -176,6 +178,8 @@ static status_t doShutDown(void* obj) {
     if(me->mCodec != NULL) {
         ret = me->mCodec->stop();
         CHECK(ret == OK);
+		ret = me->mCodec->release();
+        CHECK(ret == OK);
         me->mCodec = NULL;
     }
     if(me->mMediaFormat != NULL) {
@@ -183,6 +187,7 @@ static status_t doShutDown(void* obj) {
     }
     me->mSawInputEOS = true;
     me->mSawOutputEOS= true;
+	MediaCodecList::destoryLocalInstance();
     return ret;
 }
 

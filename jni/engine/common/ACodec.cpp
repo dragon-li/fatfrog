@@ -624,15 +624,11 @@ void ACodec::dumpBuffers(OMX_U32 portIndex) {
             portIndex == kPortIndexInput ? "input" : "output", mBuffers[portIndex].size());
     for (size_t i = 0; i < mBuffers[portIndex].size(); ++i) {
         const BufferInfo &info = mBuffers[portIndex][i];
-        LLOGI("  slot %2zu: #%8u %p/%p %s(%d) dequeued:%u",
+        LLOGI("  slot %2zu: #%8u %p %s(%d) size:%zu",
                 i, info.mBufferID, info.mData.get(),
-                
-                _asString(info.mStatus), info.mStatus);
+                _asString(info.mStatus), info.mStatus,info.mData->size());
     }
 }
-
-
-
 
 status_t ACodec::freeBuffersOnPort(OMX_U32 portIndex) {
     status_t err = OK;
@@ -3034,6 +3030,7 @@ void ACodec::BaseState::onInputBufferFilled(const sp<AMessage> &msg) {
                 if (flags & OMX_BUFFERFLAG_CODECCONFIG) {
                     LLOGV("[%s] calling emptyBuffer %u w/ codec specific data",
                          mCodec->mComponentName.c_str(), bufferID);
+                    hexdump(buffer->data(), buffer->size(), 4u,NULL); 
                 } else if (flags & OMX_BUFFERFLAG_EOS) {
                     LLOGV("[%s] calling emptyBuffer %u w/ EOS",
                          mCodec->mComponentName.c_str(), bufferID);

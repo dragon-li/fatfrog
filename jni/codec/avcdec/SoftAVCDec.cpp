@@ -124,7 +124,7 @@ SoftAVC::SoftAVC(
       mStride(mWidth){
     initPorts(
             1 /* numMinInputBuffers */, kNumBuffers, INPUT_BUF_SIZE,
-            1 /* numMinOutputBuffers */, kNumBuffers, CODEC_MIME_TYPE);
+            1 /* numMinOutputBuffers */, kNumBuffers, CODEC_MIME_TYPE,2u/*minCompressRatio*/);
 
     GETTIME(&mTimeStart, NULL);
 
@@ -671,6 +671,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
             // If the decoder is in the changing resolution mode and there is no output present,
             // that means the switching is done and it's ready to reset the decoder and the plugin.
             if (mChangingResolution && !s_dec_op.u4_output_present) {
+				LLOGD("LIYL %s %d ",__func__,__LINE__);
                 mChangingResolution = false;
                 resetDecoder();
                 resetPlugin();
@@ -680,6 +681,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
             }
 
             if (resChanged) {
+				LLOGD("LIYL %s %d ",__func__,__LINE__);
                 mChangingResolution = true;
                 if (mFlushNeeded) {
                     setFlushMode();
@@ -690,6 +692,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
             // Combine the resolution change and coloraspects change in one PortSettingChange event
             // if necessary.
             if ((0 < s_dec_op.u4_pic_wd) && (0 < s_dec_op.u4_pic_ht)) {
+				LLOGD("LIYL %s %d ",__func__,__LINE__);
                 uint32_t width = s_dec_op.u4_pic_wd;
                 uint32_t height = s_dec_op.u4_pic_ht;
                 bool portWillReset = false;
@@ -699,6 +702,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                     return;
                 }
             } else if (mUpdateColorAspects) {
+				LLOGD("LIYL %s %d ",__func__,__LINE__);
                 notify(OMX_EventPortSettingsChanged, kOutputPortIndex,
                     kDescribeColorAspectsIndex, NULL);
                 mUpdateColorAspects = false;
@@ -714,12 +718,14 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                 outInfo->mOwnedByUs = false;
                 outQueue.erase(outQueue.begin());
                 outInfo = NULL;
+				LLOGD("LIYL %s %d ",__func__,__LINE__);
                 notifyFillBufferDone(outHeader);
                 outHeader = NULL;
             } else if (mIsInFlush) {
                 /* If in flush mode and no output is returned by the codec,
                  * then come out of flush mode */
                 mIsInFlush = false;
+				LLOGD("LIYL %s %d ",__func__,__LINE__);
 
                 /* If EOS was recieved on input port and there is no output
                  * from the codec, then signal EOS on output port */
@@ -730,6 +736,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                     outInfo->mOwnedByUs = false;
                     outQueue.erase(outQueue.begin());
                     outInfo = NULL;
+				    LLOGD("LIYL %s %d ",__func__,__LINE__);
                     notifyFillBufferDone(outHeader);
                     outHeader = NULL;
                     resetPlugin();
@@ -744,10 +751,12 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
          * put in flush. This case is handled here  */
 
         if (mReceivedEOS && !mIsInFlush) {
+				LLOGD("LIYL %s %d ",__func__,__LINE__);
             setFlushMode();
         }
 
         if (inHeader != NULL) {
+				LLOGD("LIYL %s %d ",__func__,__LINE__);
             inInfo->mOwnedByUs = false;
             inQueue.erase(inQueue.begin());
             inInfo = NULL;

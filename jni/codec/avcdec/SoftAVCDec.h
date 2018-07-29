@@ -21,6 +21,7 @@
 #include "../../omx/SoftVideoDecoderOMXComponent.h"
 #include <sys/time.h>
 
+#define FILE_DUMP_ENABLE
 LIYL_NAMESPACE_START
 
 /** Number of entries in the time-stamp array */
@@ -140,7 +141,7 @@ private:
     if (fp != NULL) {                                   \
         fclose(fp);                                     \
     } else {                                            \
-        ALOGD("Could not open file %s", m_filename);    \
+        LLOGD("Could not open file %s", m_filename);    \
     }                                                   \
 }
 #define DUMP_TO_FILE(m_filename, m_buf, m_size)         \
@@ -149,14 +150,14 @@ private:
     if (fp != NULL && m_buf != NULL) {                  \
         int i;                                          \
         i = fwrite(m_buf, 1, m_size, fp);               \
-        ALOGD("fwrite ret %d to write %d", i, m_size);  \
+        LLOGD("fwrite ret %d to write %d", i, m_size);  \
         if (i != (int) m_size) {                        \
-            ALOGD("Error in fwrite, returned %d", i);   \
+            LLOGD("Error in fwrite, returned %d", i);   \
             perror("Error in write to file");           \
         }                                               \
         fclose(fp);                                     \
     } else {                                            \
-        ALOGD("Could not write to file %s", m_filename);\
+        LLOGD("Could not write to file %s", m_filename);\
     }                                                   \
 }
 #else /* FILE_DUMP_ENABLE */
