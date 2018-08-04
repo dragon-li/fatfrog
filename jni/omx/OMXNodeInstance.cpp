@@ -110,8 +110,7 @@ struct BufferMeta {
         }
 
     BufferMeta(size_t size, OMX_U32 portIndex)
-        : mSize(size),
-        mCopyFromOmx(false),
+        : mCopyFromOmx(false),
         mCopyToOmx(false),
         mPortIndex(portIndex){
         }
@@ -134,7 +133,11 @@ struct BufferMeta {
 
         memcpy(header->pBuffer + header->nOffset, mMem->data(), mMem->size());
     }
-
+	//liyl add
+    void resetBuffer() {
+         mMem->setRange(0,mMem->capacity());
+    }
+private :
     // return either the codec or the backup buffer
     sp<ABuffer> getBuffer(const OMX_BUFFERHEADERTYPE *header, bool limit) {
         sp<ABuffer> buf;
@@ -150,7 +153,7 @@ struct BufferMeta {
         return buf;
     }
 
-
+public :
     OMX_U32 getPortIndex() {
         return mPortIndex;
     }
@@ -158,9 +161,8 @@ struct BufferMeta {
     ~BufferMeta() {
     }
 
-    private:
+private:
     sp<ABuffer> mMem;
-    size_t mSize;
     bool mCopyFromOmx;
     bool mCopyToOmx;
     OMX_U32 mPortIndex;
@@ -736,6 +738,8 @@ bool OMXNodeInstance::handleMessage(omx_message &msg) {
     } else if (msg.type == omx_message::EMPTY_BUFFER_DONE) {
         OMX_BUFFERHEADERTYPE *buffer =
             findBufferHeader(msg.u.buffer_data.buffer, kPortIndexInput);
+        BufferMeta *buffer_meta = static_cast<BufferMeta *>(buffer->pAppPrivate);
+		buffer_meta->resetBuffer();
         if (buffer == NULL) {
             return false;
         }

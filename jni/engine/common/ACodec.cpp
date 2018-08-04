@@ -174,7 +174,7 @@ struct CodecObserver : public IOMXObserver {
 
                 case omx_message::FRAME_RENDERED:
                 {
-					//TODO
+                    //TODO
                     LLOGW("omx_message::FRAME_RENDERED");
                     break;
                 }
@@ -541,7 +541,7 @@ status_t ACodec::allocateBuffersOnPort(OMX_U32 portIndex) {
         if (err == OK) {
             size_t bufSize = def.nBufferSize;
 
-			//TODO
+            //TODO
             size_t allottedSize = bufSize;
 
 
@@ -574,7 +574,7 @@ status_t ACodec::allocateBuffersOnPort(OMX_U32 portIndex) {
                 BufferInfo info;
                 info.mStatus = BufferInfo::OWNED_BY_US;
                 info.mData = mem;
-             
+
                  err = mOMX->useBuffer(mNode, portIndex, mem, &info.mBufferID, allottedSize);
                 mBuffers[portIndex].push(info);
             }
@@ -970,7 +970,7 @@ status_t ACodec::configureCodec(
     }
 
     //TODO for audio, create data converters if needed
-	LLOGW("TODO create data converters if needed");
+    LLOGW("TODO create data converters if needed");
 
 
     return err;
@@ -2247,15 +2247,15 @@ bool ACodec::describeColorFormat(
     if (omx->getExtensionIndex(
             node, "OMX.google.android.index.describeColorFormat",
             &describeColorFormatIndex) == OK) {
-		LLOGE("don't support OMX.google.android.index.describeColorFormat");
-		return false; 
+        LLOGE("don't support OMX.google.android.index.describeColorFormat");
+        return false;
 
     } else if (omx->getExtensionIndex(
             node, "OMX.google.android.index.describeColorFormat2", &describeColorFormatIndex) == OK
                && omx->getParameter(
             node, describeColorFormatIndex, &describeParams, sizeof(describeParams)) == OK) {
-		LLOGE("don't support OMX.google.android.index.describeColorFormat2");
-		return false; 
+         LLOGE("don't support OMX.google.android.index.describeColorFormat2");
+         return false;
     }
 
     return describeDefaultColorFormat(describeParams);
@@ -2600,7 +2600,7 @@ void ACodec::onOutputFormatChanged(sp<const AMessage> expectedFormat) {
     }
 
     if (!mIsVideo && !mIsEncoder) {
-		//TODO
+        //TODO
         LLOGW("TODO mybe need converter");
     }
 
@@ -2772,7 +2772,7 @@ bool ACodec::BaseState::onOMXMessageList(const sp<AMessage> &msg) {
     }
 
     if (receivedRenderedEvents) {
-		//TODO
+        //TODO
         // NOTE: all buffers are rendered in this case
         //mCodec->notifyOfRenderedFrames();
     }
@@ -3197,7 +3197,7 @@ bool ACodec::BaseState::onOMXFillBufferDone(
                      mCodec->mComponentName.c_str(), info->mBufferID);
 
                 err = mCodec->mOMX->fillBuffer(mCodec->mNode, info->mBufferID 
-						,-1/*info->mFenceFd @unused*/);
+                        ,-1/*info->mFenceFd @unused*/);
                 if (err != OK) {
                     mCodec->signalError(OMX_ErrorUndefined, makeNoSideEffectStatus(err));
                     return true;
@@ -3934,7 +3934,7 @@ bool ACodec::ExecutingState::onMessageReceived(const sp<AMessage> &msg) {
                     mCodec->signalError(OMX_ErrorUndefined, FAILED_TRANSACTION);
                 }
                 // TODO: do some recovery here.
-				LLOGW("TODO do some recovery here");
+                LLOGW("TODO do some recovery here");
             } else {
                 mCodec->changeState(mCodec->mExecutingToIdleState);
             }
@@ -4008,7 +4008,7 @@ bool ACodec::ExecutingState::onMessageReceived(const sp<AMessage> &msg) {
 
 status_t ACodec::setParameters(const sp<AMessage> &params) {
     int32_t videoBitrate;
-	status_t err = OK;
+    status_t err = OK;
     if (params->findInt32("video-bitrate", &videoBitrate)) {
         OMX_VIDEO_CONFIG_BITRATETYPE configParams;
         InitOMXParams(&configParams);
