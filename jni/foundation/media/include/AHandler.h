@@ -18,7 +18,7 @@
 
 #define __LIYL_A_HANDLER_H_
 
-#include <map>
+#include "../../system/core/utils/KeyedVector.h"
 #include "ALooper.h"
 #include "../../system/core/utils/RefBase.h"
 
@@ -29,9 +29,9 @@ struct AMessage;
 struct AHandler : public RefBase {
     AHandler()
         : mID(0),
-          mVerboseStats(false),
-          mMessageCounter(0) {
-    }
+        mVerboseStats(false),
+        mMessageCounter(0) {
+        }
 
     ALooper::handler_id id() const {
         return mID;
@@ -50,10 +50,10 @@ struct AHandler : public RefBase {
         return const_cast<AHandler *>(this);
     }
 
-protected:
+    protected:
     virtual void onMessageReceived(const sp<AMessage> &msg) = 0;
 
-private:
+    private:
     friend struct AMessage;      // deliverMessage()
     friend struct ALooperRoster; // setID()
 
@@ -67,7 +67,7 @@ private:
 
     bool mVerboseStats;
     uint32_t mMessageCounter;
-    std::map<uint32_t, uint32_t> mMessages;
+    KeyedVector<uint32_t, uint32_t> mMessages;
 
     void deliverMessage(const sp<AMessage> &msg);
 

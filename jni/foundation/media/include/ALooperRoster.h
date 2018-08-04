@@ -18,7 +18,7 @@
 
 #define __LIYL_A_LOOPER_ROSTER_H_
 
-#include <map>
+#include "../../system/core/utils/KeyedVector.h"
 #include "ALooper.h"
 
 LIYL_NAMESPACE_START
@@ -41,8 +41,7 @@ private:
     };
 
     Mutex mLock;
-    typedef std::map<ALooper::handler_id, HandlerInfo> tHandlerInfoMap;
-    tHandlerInfoMap mHandlers;
+    KeyedVector<ALooper::handler_id, HandlerInfo> mHandlers;
     ALooper::handler_id mNextHandlerID;
 
     DISALLOW_EVIL_CONSTRUCTORS(ALooperRoster);

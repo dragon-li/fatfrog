@@ -23,19 +23,20 @@
 
 LIYL_NAMESPACE_START
 
-    void AHandler::deliverMessage(const sp<AMessage> &msg) {
-        onMessageReceived(msg);
-        mMessageCounter++;
+void AHandler::deliverMessage(const sp<AMessage> &msg) {
+    onMessageReceived(msg);
+    mMessageCounter++;
 
-        if (mVerboseStats) {
-            uint32_t what = msg->what();
-            int count = mMessages.count(what);
-            if (count <= 0) {
-                mMessages.insert(std::pair<uint32_t,uint32_t>(what, 1));
-            } else {
-                (mMessages[what])++;
-            }
+    if (mVerboseStats) {
+        uint32_t what = msg->what();
+        ssize_t idx = mMessages.indexOfKey(what);
+        if (idx < 0) {
+            mMessages.add(what, 1);
+        } else {
+            mMessages.editValueAt(idx)++;
         }
     }
+
+}
 
 LIYL_NAMESPACE_END

@@ -738,6 +738,7 @@ bool OMXNodeInstance::handleMessage(omx_message &msg) {
     } else if (msg.type == omx_message::EMPTY_BUFFER_DONE) {
         OMX_BUFFERHEADERTYPE *buffer =
             findBufferHeader(msg.u.buffer_data.buffer, kPortIndexInput);
+		//liyl add
         BufferMeta *buffer_meta = static_cast<BufferMeta *>(buffer->pAppPrivate);
 		buffer_meta->resetBuffer();
         if (buffer == NULL) {
