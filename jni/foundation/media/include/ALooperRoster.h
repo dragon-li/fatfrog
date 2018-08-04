@@ -34,6 +34,8 @@ struct ALooperRoster {
 
     void dump(int fd, const std::list<std::string>& args);
 
+    //liyl add
+    static ALooperRoster* getLocalLooperRoster();
 private:
     struct HandlerInfo {
         wp<ALooper> mLooper;

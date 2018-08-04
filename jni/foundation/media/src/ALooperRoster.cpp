@@ -76,28 +76,34 @@ void ALooperRoster::unregisterStaleHandlers() {
 
     Vector<sp<ALooper> > activeLoopers;
     {
-      Mutex::Autolock autoLock(mLock);
+        Mutex::Autolock autoLock(mLock);
 
-      for (size_t i = mHandlers.size(); i > 0;) {
-          i--;
-          const HandlerInfo &info = mHandlers.valueAt(i);
+        for (size_t i = mHandlers.size(); i > 0;) {
+            i--;
+            const HandlerInfo &info = mHandlers.valueAt(i);
 
-          sp<ALooper> looper = info.mLooper.promote();
-          if (looper == NULL) {
-              LLOGV("Unregistering stale handler %d", mHandlers.keyAt(i));
-              mHandlers.removeItemsAt(i);
-          } else {
-              // At this point 'looper' might be the only sp<> keeping
-        // the object alive. To prevent it from going out of scope
-    // and having ~ALooper call this method again recursively
-  // and then deadlocking because of the Autolock above, add
-  // it to a Vector which will go out of scope after the lock
-  // has been released.
-              activeLoopers.add(looper);
-          }
-      }
-  }
+            sp<ALooper> looper = info.mLooper.promote();
+            if (looper == NULL) {
+                LLOGV("Unregistering stale handler %d", mHandlers.keyAt(i));
+                mHandlers.removeItemsAt(i);
+            } else {
+                // At this point 'looper' might be the only sp<> keeping
+                // the object alive. To prevent it from going out of scope
+                // and having ~ALooper call this method again recursively
+                // and then deadlocking because of the Autolock above, add
+                // it to a Vector which will go out of scope after the lock
+                // has been released.
+                activeLoopers.add(looper);
+            }
+        }
+    }
 
+}
+
+/*static*/
+ALooperRoster* ALooperRoster::getLocalLooperRoster() {
+    static ALooperRoster sLocalLooperRoster;
+    return &sLocalLooperRoster;
 }
 
 static void makeFourCC(uint32_t fourcc, char *s) {

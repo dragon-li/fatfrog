@@ -30,231 +30,229 @@
 
 LIYL_NAMESPACE_START
 
-    ALooperRoster gLooperRoster;
-
-    struct ALooper::LooperThread : public Thread {
-        LooperThread(ALooper *looper, bool canCallJava)
-            : Thread(canCallJava),
-            mLooper(looper),
-            mThreadId(NULL) {
-            }
-
-        virtual status_t readyToRun() {
-            mThreadId = liylGetThreadId();
-
-            return Thread::readyToRun();
+struct ALooper::LooperThread : public Thread {
+    LooperThread(ALooper *looper, bool canCallJava)
+        : Thread(canCallJava),
+        mLooper(looper),
+        mThreadId(NULL) {
         }
 
-        virtual bool threadLoop() {
-            return mLooper->loop();
-        }
+    virtual status_t readyToRun() {
+        mThreadId = liylGetThreadId();
 
-        bool isCurrentThread() const {
-            return mThreadId == liylGetThreadId();
-        }
-
-        protected:
-        virtual ~LooperThread() {}
-
-        private:
-        ALooper *mLooper;
-        liyl_thread_id_t mThreadId;
-
-        DISALLOW_EVIL_CONSTRUCTORS(LooperThread);
-    };
-
-    // static
-    int64_t ALooper::GetNowUs() {
-        return systemTime(SYSTEM_TIME_MONOTONIC) / 1000ll;
+        return Thread::readyToRun();
     }
 
-    ALooper::ALooper()
-        : mRunningLocally(false) {
-            // clean up stale AHandlers. Doing it here instead of in the destructor avoids
-            // the side effect of objects being deleted from the unregister function recursively.
-            gLooperRoster.unregisterStaleHandlers();
-        }
-
-    ALooper::~ALooper() {
-        stop();
-        // stale AHandlers are now cleaned up in the constructor of the next ALooper to come along
+    virtual bool threadLoop() {
+        return mLooper->loop();
     }
 
-    void ALooper::setName(const char *name) {
-        mName = name;
+    bool isCurrentThread() const {
+        return mThreadId == liylGetThreadId();
     }
 
-    ALooper::handler_id ALooper::registerHandler(const sp<AHandler> &handler) {
-        return gLooperRoster.registerHandler(this, handler);
+    protected:
+    virtual ~LooperThread() {}
+
+    private:
+    ALooper *mLooper;
+    liyl_thread_id_t mThreadId;
+
+    DISALLOW_EVIL_CONSTRUCTORS(LooperThread);
+};
+
+// static
+int64_t ALooper::GetNowUs() {
+    return systemTime(SYSTEM_TIME_MONOTONIC) / 1000ll;
+}
+
+ALooper::ALooper()
+    : mRunningLocally(false) {
+        // clean up stale AHandlers. Doing it here instead of in the destructor avoids
+    // the side effect of objects being deleted from the unregister function recursively.
+        ALooperRoster::getLocalLooperRoster()->unregisterStaleHandlers();
     }
 
-    void ALooper::unregisterHandler(handler_id handlerID) {
-        gLooperRoster.unregisterHandler(handlerID);
-    }
+ALooper::~ALooper() {
+    stop();
+    // stale AHandlers are now cleaned up in the constructor of the next ALooper to come along
+}
 
-    status_t ALooper::start(
-            bool runOnCallingThread, bool canCallJava, int32_t priority) {
-        if (runOnCallingThread) {
-            {
-                Mutex::Autolock autoLock(mLock);
+void ALooper::setName(const char *name) {
+    mName = name;
+}
 
-                if (mThread != NULL || mRunningLocally) {
-                    return INVALID_OPERATION;
-                }
+ALooper::handler_id ALooper::registerHandler(const sp<AHandler> &handler) {
+    return ALooperRoster::getLocalLooperRoster()->registerHandler(this, handler);
+}
 
-                mRunningLocally = true;
-            }
+void ALooper::unregisterHandler(handler_id handlerID) {
+    ALooperRoster::getLocalLooperRoster()->unregisterHandler(handlerID);
+}
 
-            do {
-            } while (loop());
-
-            return OK;
-        }
-
+status_t ALooper::start(
+        bool runOnCallingThread, bool canCallJava, int32_t priority) {
+    if (runOnCallingThread) {
+        {
         Mutex::Autolock autoLock(mLock);
 
         if (mThread != NULL || mRunningLocally) {
             return INVALID_OPERATION;
         }
 
-        mThread = new LooperThread(this, canCallJava);
-
-        status_t err = mThread->run(
-                mName.empty() ? "ALooper" : mName.c_str(), priority);
-        if (err != OK) {
-            mThread.clear();
-        }
-
-        return err;
+        mRunningLocally = true;
     }
 
-    status_t ALooper::stop() {
-        sp<LooperThread> thread;
-        bool runningLocally;
+        do {
+        } while (loop());
 
-        {
-            Mutex::Autolock autoLock(mLock);
+        return OK;
+    }
 
-            thread = mThread;
-            runningLocally = mRunningLocally;
-            mThread.clear();
-            mRunningLocally = false;
-        }
+    Mutex::Autolock autoLock(mLock);
 
-        if (thread == NULL && !runningLocally) {
-            return INVALID_OPERATION;
-        }
+    if (mThread != NULL || mRunningLocally) {
+        return INVALID_OPERATION;
+    }
 
-        if (thread != NULL) {
-            thread->requestExit();
-        }
+    mThread = new LooperThread(this, canCallJava);
 
+    status_t err = mThread->run(
+            mName.empty() ? "ALooper" : mName.c_str(), priority);
+    if (err != OK) {
+        mThread.clear();
+    }
+
+    return err;
+}
+
+status_t ALooper::stop() {
+    sp<LooperThread> thread;
+    bool runningLocally;
+
+    {
+      Mutex::Autolock autoLock(mLock);
+
+      thread = mThread;
+      runningLocally = mRunningLocally;
+      mThread.clear();
+      mRunningLocally = false;
+  }
+
+    if (thread == NULL && !runningLocally) {
+        return INVALID_OPERATION;
+    }
+
+    if (thread != NULL) {
+        thread->requestExit();
+    }
+
+    mQueueChangedCondition.signal();
+    {
+      Mutex::Autolock autoLock(mRepliesLock);
+      mRepliesCondition.broadcast();
+  }
+
+    if (!runningLocally && !thread->isCurrentThread()) {
+        // If not running locally and this thread _is_ the looper thread,
+    // the loop() function will return and never be called again.
+        thread->requestExitAndWait();
+    }
+
+    return OK;
+}
+
+void ALooper::post(const sp<AMessage> &msg, int64_t delayUs) {
+    Mutex::Autolock autoLock(mLock);
+
+    int64_t whenUs;
+    if (delayUs > 0) {
+        whenUs = GetNowUs() + delayUs;
+    } else {
+        whenUs = GetNowUs();
+    }
+
+    std::list<Event>::iterator it = mEventQueue.begin();
+    while (it != mEventQueue.end() && (*it).mWhenUs <= whenUs) {
+        ++it;
+    }
+
+    Event event;
+    event.mWhenUs = whenUs;
+    event.mMessage = msg;
+
+    if (it == mEventQueue.begin()) {
         mQueueChangedCondition.signal();
-        {
-            Mutex::Autolock autoLock(mRepliesLock);
-            mRepliesCondition.broadcast();
-        }
-
-        if (!runningLocally && !thread->isCurrentThread()) {
-            // If not running locally and this thread _is_ the looper thread,
-            // the loop() function will return and never be called again.
-            thread->requestExitAndWait();
-        }
-
-        return OK;
     }
 
-    void ALooper::post(const sp<AMessage> &msg, int64_t delayUs) {
+    mEventQueue.insert(it, event);
+}
+
+bool ALooper::loop() {
+    Event event;
+
+    {
+      Mutex::Autolock autoLock(mLock);
+      if (mThread == NULL && !mRunningLocally) {
+          return false;
+      }
+      if (mEventQueue.empty()) {
+          mQueueChangedCondition.wait(mLock);
+          return true;
+      }
+      int64_t whenUs = (*mEventQueue.begin()).mWhenUs;
+      int64_t nowUs = GetNowUs();
+
+      if (whenUs > nowUs) {
+          int64_t delayUs = whenUs - nowUs;
+          mQueueChangedCondition.waitRelative(mLock, delayUs * 1000ll);
+
+          return true;
+      }
+
+      event = *mEventQueue.begin();
+      mEventQueue.erase(mEventQueue.begin());
+  }
+
+    event.mMessage->deliver();
+
+    // NOTE: It's important to note that at this point our "ALooper" object
+  // may no longer exist (its final reference may have gone away while
+  // delivering the message). We have made sure, however, that loop()
+  // won't be called again.
+
+    return true;
+}
+
+// to be called by AMessage::postAndAwaitResponse only
+sp<AReplyToken> ALooper::createReplyToken() {
+    return new AReplyToken(this);
+}
+
+// to be called by AMessage::postAndAwaitResponse only
+status_t ALooper::awaitResponse(const sp<AReplyToken> &replyToken, sp<AMessage> *response) {
+    // return status in case we want to handle an interrupted wait
+    Mutex::Autolock autoLock(mRepliesLock);
+    CHECK(replyToken != NULL);
+    while (!replyToken->retrieveReply(response)) {
+        {
         Mutex::Autolock autoLock(mLock);
-
-        int64_t whenUs;
-        if (delayUs > 0) {
-            whenUs = GetNowUs() + delayUs;
-        } else {
-            whenUs = GetNowUs();
+        if (mThread == NULL) {
+            return -ENOENT;
         }
-
-        std::list<Event>::iterator it = mEventQueue.begin();
-        while (it != mEventQueue.end() && (*it).mWhenUs <= whenUs) {
-            ++it;
-        }
-
-        Event event;
-        event.mWhenUs = whenUs;
-        event.mMessage = msg;
-
-        if (it == mEventQueue.begin()) {
-            mQueueChangedCondition.signal();
-        }
-
-        mEventQueue.insert(it, event);
     }
-
-    bool ALooper::loop() {
-        Event event;
-
-        {
-            Mutex::Autolock autoLock(mLock);
-            if (mThread == NULL && !mRunningLocally) {
-                return false;
-            }
-            if (mEventQueue.empty()) {
-                mQueueChangedCondition.wait(mLock);
-                return true;
-            }
-            int64_t whenUs = (*mEventQueue.begin()).mWhenUs;
-            int64_t nowUs = GetNowUs();
-
-            if (whenUs > nowUs) {
-                int64_t delayUs = whenUs - nowUs;
-                mQueueChangedCondition.waitRelative(mLock, delayUs * 1000ll);
-
-                return true;
-            }
-
-            event = *mEventQueue.begin();
-            mEventQueue.erase(mEventQueue.begin());
-        }
-
-        event.mMessage->deliver();
-
-        // NOTE: It's important to note that at this point our "ALooper" object
-        // may no longer exist (its final reference may have gone away while
-        // delivering the message). We have made sure, however, that loop()
-        // won't be called again.
-
-        return true;
+        mRepliesCondition.wait(mRepliesLock);
     }
+    return OK;
+}
 
-    // to be called by AMessage::postAndAwaitResponse only
-    sp<AReplyToken> ALooper::createReplyToken() {
-        return new AReplyToken(this);
+status_t ALooper::postReply(const sp<AReplyToken> &replyToken, const sp<AMessage> &reply) {
+    Mutex::Autolock autoLock(mRepliesLock);
+    status_t err = replyToken->setReply(reply);
+    if (err == OK) {
+        mRepliesCondition.broadcast();
     }
-
-    // to be called by AMessage::postAndAwaitResponse only
-    status_t ALooper::awaitResponse(const sp<AReplyToken> &replyToken, sp<AMessage> *response) {
-        // return status in case we want to handle an interrupted wait
-        Mutex::Autolock autoLock(mRepliesLock);
-        CHECK(replyToken != NULL);
-        while (!replyToken->retrieveReply(response)) {
-            {
-                Mutex::Autolock autoLock(mLock);
-                if (mThread == NULL) {
-                    return -ENOENT;
-                }
-            }
-            mRepliesCondition.wait(mRepliesLock);
-        }
-        return OK;
-    }
-
-    status_t ALooper::postReply(const sp<AReplyToken> &replyToken, const sp<AMessage> &reply) {
-        Mutex::Autolock autoLock(mRepliesLock);
-        status_t err = replyToken->setReply(reply);
-        if (err == OK) {
-            mRepliesCondition.broadcast();
-        }
-        return err;
-    }
+    return err;
+}
 
 LIYL_NAMESPACE_END

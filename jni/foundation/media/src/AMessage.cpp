@@ -32,7 +32,6 @@
 
 LIYL_NAMESPACE_START
 
-    extern ALooperRoster gLooperRoster;
 
     status_t AReplyToken::setReply(const sp<AMessage> &reply) {
         if (mReplied) {
