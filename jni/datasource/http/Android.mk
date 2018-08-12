@@ -72,6 +72,8 @@ LOCAL_LDLIBS    += -llog -lz
 LOCAL_CLANG := true
 LOCAL_SANITIZE := unsigned-integer-overflow signed-integer-overflow
 
+LOCAL_LDFLAGS += -Wl,-Bsymbolic
+
 LOCAL_MODULE := libhttp
 
 include $(BUILD_SHARED_LIBRARY)

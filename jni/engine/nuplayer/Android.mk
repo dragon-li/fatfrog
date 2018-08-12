@@ -39,6 +39,6 @@ LOCAL_LIBS  += -llog
 LOCAL_CLANG := true
 LOCAL_SANITIZE := unsigned-integer-overflow signed-integer-overflow
 
-LOCAL_LDFLAGS := -Wl,-Bsymbolic
+LOCAL_LDFLAGS += -Wl,-Bsymbolic
 
 include $(BUILD_SHARED_LIBRARY)
