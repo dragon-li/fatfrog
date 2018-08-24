@@ -1,9 +1,9 @@
 /****************************************************
-*
-*  @Author: liyl- liyunlong880325@gmail.com
-*  Last modified: 2018-07-21 23:35
-*  @Filename: ndk_mediacodec.h
-*****************************************************/
+ *
+ *  @Author: liyl- liyunlong880325@gmail.com
+ *  Last modified: 2018-07-21 23:35
+ *  @Filename: ndk_mediacodec.h
+ *****************************************************/
 #ifndef NDK_MEDIACODEC_H
 #define NDK_MEDIACODEC_H
 #include <pthread.h>
@@ -22,23 +22,24 @@ typedef int (*fillThisInputBuffer)(void* data,int32_t offset,size_t size,int32_t
 typedef int (*drainThisOutputBuffer)(void* data,int32_t offset,size_t size,int64_t presentationTimeUs,uint32_t flags,void* context);
 
 typedef struct NdkMediaCodec {
-        pthread_mutex_t       mLock;
-        LNativeWindow*        mWindow;
-        sp<MediaCodec>        mCodec;
-        sp<AMessage>          mMediaFormat;
-		sp<ALooper>           mLooper;
-        int32_t               mWidth;
-        int32_t               mHeight;
-        int32_t               mFps;
-        int32_t               mBitrate;
-		uint8_t*              mCsd;
-		int32_t               mCsdSize;
-        bool                  mSawInputEOS;
-        bool                  mSawOutputEOS;
-        status_t              mResult;
-        void*                 mListener;
-        fillThisInputBuffer   mFTIB;
-        drainThisOutputBuffer mDTOB;
+    pthread_mutex_t       mLock;
+    bool                  isVideo;
+    LNativeWindow*        mWindow;
+    sp<MediaCodec>        mCodec;
+    sp<AMessage>          mMediaFormat;
+    sp<ALooper>           mLooper;
+    int32_t               mWidth;
+    int32_t               mHeight;
+    int32_t               mFps;
+    int32_t               mBitrate;
+    uint8_t*              mCsd;
+    int32_t               mCsdSize;
+    bool                  mSawInputEOS;
+    bool                  mSawOutputEOS;
+    status_t              mResult;
+    void*                 mListener;
+    fillThisInputBuffer   mFTIB;
+    drainThisOutputBuffer mDTOB;
 } NdkMediaCodec;
 
 status_t NdkMediaCodec_init(NdkMediaCodec* me);

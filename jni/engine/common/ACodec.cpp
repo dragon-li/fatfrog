@@ -1100,6 +1100,7 @@ status_t ACodec::setupAACCodec(
         int32_t bitRate, int32_t aacProfile, bool isADTS, int32_t sbrMode,
         int32_t maxOutputChannelCount, const drcParams_t& drc,
         int32_t pcmLimiterEnable) {
+    LLOGD("encoder = %ld numChannels = %ld sampleRate = %ld bitRate = %ld aacProfile = %ld isADTS = %ld sbrMode = %ld maxOutputChannelCount %ld ",encoder, numChannels, sampleRate , bitRate, aacProfile, isADTS, sbrMode, maxOutputChannelCount);
     if (encoder && isADTS) {
         return -EINVAL;
     }

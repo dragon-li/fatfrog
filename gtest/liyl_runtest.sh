@@ -62,4 +62,5 @@ adb shell setprop libc.debug.malloc.program /data/local/tmp/omx_test
 #adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=HttpDownloaderTest.*"
 #adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=HttpDataSourceTest.*"
 #adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=MediaCodecListTest.*"
-adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=MediaCodecTest.*"
+#adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=VideoMediaCodecTest.*"
+adb shell "LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/omx_test --gtest_filter=AudioMediaCodecTest.*"

@@ -544,178 +544,39 @@ common_c_includes := \
   include \
   include/openssl \
 
-arm_c_flags := \
-  -DAES_ASM \
-  -DDES_UNROLL \
-  -DOPENSSL_CPUID_OBJ \
-  -DSHA1_ASM \
-  -DSHA256_ASM \
-  -DSHA512_ASM \
-  #-DOPENSSL_BN_ASM_GF2m \
-  -DOPENSSL_BN_ASM_MONT \
-  -DGHASH_ASM \
+arm_c_flags :=
 
-#arm_src_files := \
-#  crypto/aes/asm/aes-armv4.S \
-#  crypto/aes/asm/aesv8-armx.S \
-#  crypto/aes/asm/bsaes-armv7.S \
-#  crypto/armcap.c \
-#  crypto/armv4cpuid.S \
-#  crypto/bn/asm/armv4-gf2m.S \
-#  crypto/bn/asm/armv4-mont.S \
-#  crypto/modes/asm/ghash-armv4.S \
-#  crypto/modes/asm/ghashv8-armx.S \
-#  crypto/sha/asm/sha1-armv4-large.S \
-#  crypto/sha/asm/sha256-armv4.S \
-#  crypto/sha/asm/sha512-armv4.S \
+arm_src_files :=
 
-arm_src_files := \
-  crypto/aes/asm/aes-armv4.S \
-  crypto/armcap.c \
-  crypto/armv4cpuid.S \
-  crypto/sha/asm/sha1-armv4-large.S \
-  crypto/sha/asm/sha256-armv4.S \
-  crypto/sha/asm/sha512-armv4.S \
+arm_src_files :=
 
+arm_exclude_files :=
 
-arm_exclude_files := \
-  crypto/aes/aes_core.c \
-  crypto/mem_clr.c \
+arm64_c_flags :=
 
-arm64_c_flags := \
-  -DDES_UNROLL \
-  -DOPENSSL_CPUID_OBJ \
-  -DSHA1_ASM \
-  -DSHA256_ASM \
-  -DSHA512_ASM \
+arm64_src_files :=
 
-#arm64_src_files := \
-#  crypto/aes/asm/aesv8-armx-64.S \
-#  crypto/arm64cpuid.S \
-#  crypto/armcap.c \
-#  crypto/modes/asm/ghashv8-armx-64.S \
-#  crypto/sha/asm/sha1-armv8.S \
-#  crypto/sha/asm/sha256-armv8.S \
-#  crypto/sha/asm/sha512-armv8.S \
-
-arm64_src_files := \
-  crypto/aes/asm/aesv8-armx-64.S \
-  crypto/arm64cpuid.S \
-  crypto/armcap.c \
-  crypto/modes/asm/ghashv8-armx-64.S \
-  crypto/sha/asm/sha1-armv8.S \
-  crypto/sha/asm/sha256-armv8.S \
-  crypto/sha/asm/sha512-armv8.S \
-
+arm64_src_files :=
 
 arm64_exclude_files :=
 
-x86_c_flags := \
-  -DAES_ASM \
-  -DDES_PTR \
-  -DDES_RISC1 \
-  -DDES_UNROLL \
-  -DGHASH_ASM \
-  -DMD5_ASM \
-  -DOPENSSL_BN_ASM_GF2m \
-  -DOPENSSL_BN_ASM_MONT \
-  -DOPENSSL_BN_ASM_PART_WORDS \
-  -DOPENSSL_CPUID_OBJ \
-  -DOPENSSL_IA32_SSE2 \
-  -DRC4_INDEX \
-  -DRMD160_ASM \
-  -DSHA1_ASM \
-  -DSHA256_ASM \
-  -DSHA512_ASM \
-  -DVPAES_ASM \
+x86_c_flags :=
 
-x86_src_files := \
-  crypto/aes/asm/aes-586.S \
-  crypto/aes/asm/aesni-x86.S \
-  crypto/aes/asm/vpaes-x86.S \
-  crypto/bf/asm/bf-586.S \
-  crypto/bn/asm/bn-586.S \
-  crypto/bn/asm/co-586.S \
-  crypto/bn/asm/x86-gf2m.S \
-  crypto/bn/asm/x86-mont.S \
-  crypto/des/asm/crypt586.S \
-  crypto/des/asm/des-586.S \
-  crypto/md5/asm/md5-586.S \
-  crypto/modes/asm/ghash-x86.S \
-  crypto/sha/asm/sha1-586.S \
-  crypto/sha/asm/sha256-586.S \
-  crypto/sha/asm/sha512-586.S \
-  crypto/x86cpuid.S \
+x86_src_files :=
 
-x86_exclude_files := \
-  crypto/aes/aes_cbc.c \
-  crypto/aes/aes_core.c \
-  crypto/bf/bf_enc.c \
-  crypto/bn/bn_asm.c \
-  crypto/des/des_enc.c \
-  crypto/des/fcrypt_b.c \
-  crypto/mem_clr.c \
+x86_exclude_files :=
 
-x86_64_c_flags := \
-  -DAES_ASM \
-  -DBSAES_ASM \
-  -DDES_UNROLL \
-  -DGHASH_ASM \
-  -DMD5_ASM \
-  -DOPENSSL_BN_ASM_GF2m \
-  -DOPENSSL_BN_ASM_MONT \
-  -DOPENSSL_BN_ASM_MONT5 \
-  -DOPENSSL_CPUID_OBJ \
-  -DOPENSSL_IA32_SSE2 \
-  -DSHA1_ASM \
-  -DSHA256_ASM \
-  -DSHA512_ASM \
-  -DVPAES_ASM \
+x86_64_c_flags :=
 
-x86_64_src_files := \
-  crypto/aes/asm/aes-x86_64.S \
-  crypto/aes/asm/aesni-sha1-x86_64.S \
-  crypto/aes/asm/aesni-x86_64.S \
-  crypto/aes/asm/bsaes-x86_64.S \
-  crypto/aes/asm/vpaes-x86_64.S \
-  crypto/bn/asm/modexp512-x86_64.S \
-  crypto/bn/asm/x86_64-gcc.c \
-  crypto/bn/asm/x86_64-gf2m.S \
-  crypto/bn/asm/x86_64-mont.S \
-  crypto/bn/asm/x86_64-mont5.S \
-  crypto/md5/asm/md5-x86_64.S \
-  crypto/modes/asm/ghash-x86_64.S \
-  crypto/rc4/asm/rc4-md5-x86_64.S \
-  crypto/rc4/asm/rc4-x86_64.S \
-  crypto/sha/asm/sha1-x86_64.S \
-  crypto/sha/asm/sha256-x86_64.S \
-  crypto/sha/asm/sha512-x86_64.S \
-  crypto/x86_64cpuid.S \
+x86_64_src_files :=
 
-x86_64_exclude_files := \
-  crypto/aes/aes_cbc.c \
-  crypto/aes/aes_core.c \
-  crypto/bn/bn_asm.c \
-  crypto/mem_clr.c \
-  crypto/rc4/rc4_enc.c \
-  crypto/rc4/rc4_skey.c \
+x86_64_exclude_files :=
 
-mips_c_flags := \
-  -DAES_ASM \
-  -DOPENSSL_BN_ASM_MONT \
-  -DSHA1_ASM \
-  -DSHA256_ASM \
+mips_c_flags :=
 
-mips_src_files := \
-  crypto/aes/asm/aes-mips.S \
-  crypto/bn/asm/bn-mips.S \
-  crypto/bn/asm/mips-mont.S \
-  crypto/sha/asm/sha1-mips.S \
-  crypto/sha/asm/sha256-mips.S \
+mips_src_files :=
 
-mips_exclude_files := \
-  crypto/aes/aes_core.c \
-  crypto/bn/bn_asm.c \
+mips_exclude_files :=
 
 target_arch := $(TARGET_ARCH)
 ifeq ($(target_arch)-$(TARGET_HAS_BIGENDIAN),mips-true)

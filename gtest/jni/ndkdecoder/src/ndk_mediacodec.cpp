@@ -1,9 +1,9 @@
 /****************************************************
-*
-*  @Author: liyl- liyunlong880325@gmail.com
-*  Last modified: 2018-07-22 15:24
-*  @Filename: ndk_mediacodec.c
-*****************************************************/
+ *
+ *  @Author: liyl- liyunlong880325@gmail.com
+ *  Last modified: 2018-07-22 15:24
+ *  @Filename: ndk_mediacodec.c
+ *****************************************************/
 #define LOG_TAG "NdkMediaCodec"
 #include "../include/ndk_mediacodec.h"
 #include "../../../../jni/foundation/media/include/ADebug.h"
@@ -41,35 +41,58 @@ const char* LMEDIAFORMAT_KEY_CSD    = "csd-0";
 
 static status_t doSetup(void* obj) {
     NdkMediaCodec* me = (NdkMediaCodec*)obj;
-	MediaCodecList::getLocalInstance();
+    MediaCodecList::getLocalInstance();
     status_t ret = OK;
-	me->mLooper  = new ALooper;
+    me->mLooper  = new ALooper;
     me->mLooper->setName("NDK MediaCodec_looper");
-	size_t res = me->mLooper->start(
-			            false,      // runOnCallingThread
-			            true,       // canCallJava XXX
-			            PRIORITY_FOREGROUND);
-	if(res != OK) {
-		LLOGE("looper start failed!!!");
-		return UNKNOWN_ERROR;
-	}
-	AString mime = "video/avc";
-    sp<MediaCodec> coder = MediaCodec::CreateByType(me->mLooper,mime,0/*decoder*/,&ret,0/*unused*/);
-    if(coder == NULL) {
-		LLOGE("coder create failed!!!");
+    size_t res = me->mLooper->start(
+            false,      // runOnCallingThread
+            true,       // canCallJava XXX
+            PRIORITY_FOREGROUND);
+    if(res != OK) {
+        LLOGE("looper start failed!!!");
         return UNKNOWN_ERROR;
     }
+    if(me->isVideo) {
+        AString mime = "video/avc";
+        sp<MediaCodec> coder = MediaCodec::CreateByType(me->mLooper,mime,0/*decoder*/,&ret,0/*unused*/);
+        if(coder == NULL) {
+            LLOGE("coder create failed!!!");
+            return UNKNOWN_ERROR;
+        }
 
-    me->mCodec = coder;
-    me->mMediaFormat = new AMessage;
-	sp<ABuffer> csd  = ABuffer::CreateAsCopy(me->mCsd,me->mCsdSize);
-    me->mMediaFormat->setString(LMEDIAFORMAT_KEY_MIME,"video/avc");
-    me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_WIDTH,me->mWidth);
-    me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_HEIGHT,me->mHeight);
-    me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_FRAME_RATE,me->mFps);
-    me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_BIT_RATE,me->mBitrate);
-    me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_COLOR_FORMAT,19);
-	me->mMediaFormat->setBuffer(LMEDIAFORMAT_KEY_CSD,csd);
+        me->mCodec = coder;
+        me->mMediaFormat = new AMessage;
+        sp<ABuffer> csd  = ABuffer::CreateAsCopy(me->mCsd,me->mCsdSize);
+        me->mMediaFormat->setString(LMEDIAFORMAT_KEY_MIME,"video/avc");
+        me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_WIDTH,me->mWidth);
+        me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_HEIGHT,me->mHeight);
+        me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_FRAME_RATE,me->mFps);
+        me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_BIT_RATE,me->mBitrate);
+        me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_COLOR_FORMAT,19);
+        me->mMediaFormat->setBuffer(LMEDIAFORMAT_KEY_CSD,csd);
+    }else {
+        AString mime = "audio/mp4a-latm";
+        sp<MediaCodec> coder = MediaCodec::CreateByType(me->mLooper,mime,0/*decoder*/,&ret,0/*unused*/);
+        if(coder == NULL) {
+            LLOGE("coder create failed!!!");
+            return UNKNOWN_ERROR;
+        }
+
+        me->mCodec = coder;
+        me->mMediaFormat = new AMessage;
+        if(me->mCsd != NULL && me->mCsdSize > 0 ) {
+            sp<ABuffer> csd  = ABuffer::CreateAsCopy(me->mCsd,me->mCsdSize);
+            me->mMediaFormat->setBuffer(LMEDIAFORMAT_KEY_CSD,csd);
+        }
+        LLOGD("SAMPLE_RATE %ld  CHANNEL_COUNT %ld BIT_RATE %ld",me->mWidth,me->mHeight,me->mBitrate);
+        me->mMediaFormat->setString(LMEDIAFORMAT_KEY_MIME,"audio/mp4a-latm");
+        me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_IS_ADTS, 1);
+        me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_SAMPLE_RATE,me->mWidth/*samplerate*/);
+        me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_CHANNEL_COUNT,me->mHeight/*channelcount*/);
+        me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_BIT_RATE,me->mBitrate);
+        me->mMediaFormat->setInt32 (LMEDIAFORMAT_KEY_AAC_PROFILE,1/*MAIN*/);
+    }
     ret = me->mCodec->configure(me->mMediaFormat,NULL/*me->mWindow*/,NULL,0u/*decoder*/);
     if(ret != OK){
         me->mCodec = NULL;
@@ -95,9 +118,9 @@ static status_t doProcessBuffer(void* obj) {
         ret = me->mCodec->dequeueInputBuffer(&bufidx ,KTIMEOUT_CODEC_PROCESS);
         LLOGD("input buffer %zd", bufidx);
         if (ret == OK) {
-			sp<ABuffer> buffer;
-			ret = me->mCodec->getInputBuffer( bufidx, &buffer);
-			CHECK(ret == OK);
+            sp<ABuffer> buffer;
+            ret = me->mCodec->getInputBuffer( bufidx, &buffer);
+            CHECK(ret == OK);
             size_t bufsize = buffer->size();;
             uint8_t *buf = buffer->data(); 
             int32_t offset = 0;
@@ -109,34 +132,34 @@ static status_t doProcessBuffer(void* obj) {
                 me->mSawInputEOS = true;
                 LLOGI("Input EOS");
             }
-			AString errMsg;
+            AString errMsg;
             ret = me->mCodec->queueInputBuffer(bufidx, 0, sampleSize, presentationTimeUs,
                     me->mSawInputEOS ? MediaCodec::BUFFER_FLAG_EOS : 0,&errMsg);
-			CHECK(ret == OK);
+            CHECK(ret == OK);
         }
     }
 
     if (me->mSawOutputEOS != true) {
-		size_t index               = 0;
-		size_t offset              = 0;
-		size_t size                = 0;
-		int64_t presentationTimeUs = -1ll;
-		uint32_t  flags            = 0;
-		status_t status = me->mCodec->dequeueOutputBuffer(&index, &offset,&size ,&presentationTimeUs, &flags, KTIMEOUT_CODEC_PROCESS);
+        size_t index               = 0;
+        size_t offset              = 0;
+        size_t size                = 0;
+        int64_t presentationTimeUs = -1ll;
+        uint32_t  flags            = 0;
+        status_t status = me->mCodec->dequeueOutputBuffer(&index, &offset,&size ,&presentationTimeUs, &flags, KTIMEOUT_CODEC_PROCESS);
         if (status == OK) {
             if (flags & MediaCodec::BUFFER_FLAG_EOS) {
                 LLOGI("output EOS");
                 me->mSawOutputEOS = true;
             }
-			sp<ABuffer> buffer;
+            sp<ABuffer> buffer;
             size_t outSize = -1;
-			uint8_t* buf = NULL;
+            uint8_t* buf = NULL;
             ret = me->mCodec->getOutputBuffer(index,&buffer);
             if(ret != OK) {
                 return ret;
             }
-			outSize = buffer->size();
-			buf     = buffer->data();
+            outSize = buffer->size();
+            buf     = buffer->data();
             CHECK(size <= outSize);
             me->mDTOB(buf,offset,size,presentationTimeUs,flags,me->mListener);
             ret = me->mCodec->releaseOutputBuffer(index);
@@ -145,7 +168,7 @@ static status_t doProcessBuffer(void* obj) {
         } else if (status == INFO_OUTPUT_BUFFERS_CHANGED) {
             LLOGI("output buffers changed");
         } else if (status == liyl::INFO_FORMAT_CHANGED) {
-			sp<AMessage> format;
+            sp<AMessage> format;
             ret = me->mCodec->getOutputFormat(&format);
             LLOGI("format changed to: %s", format->debugString().c_str());
             CHECK(ret == OK);
@@ -178,7 +201,7 @@ static status_t doShutDown(void* obj) {
     if(me->mCodec != NULL) {
         ret = me->mCodec->stop();
         CHECK(ret == OK);
-		ret = me->mCodec->release();
+        ret = me->mCodec->release();
         CHECK(ret == OK);
         me->mCodec = NULL;
     }
@@ -187,13 +210,14 @@ static status_t doShutDown(void* obj) {
     }
     me->mSawInputEOS = true;
     me->mSawOutputEOS= true;
-	MediaCodecList::destoryLocalInstance();
+    MediaCodecList::destoryLocalInstance();
     return ret;
 }
 
 ////////////////////////////////////////////NdkMediaCodec//////////////////////
 status_t NdkMediaCodec_init(NdkMediaCodec* me) {
     pthread_mutex_init(&(me->mLock), NULL);    
+    me->isVideo       = true;
     me->mWindow       = NULL;    
     //me->mCodec        = NULL;
     //me->mMediaFormat  = NULL;
@@ -216,6 +240,7 @@ status_t NdkMediaCodec_init(NdkMediaCodec* me) {
 status_t NdkMediaCodec_destroy(NdkMediaCodec* me) {
     pthread_mutex_destroy(&(me->mLock));
     me->mWindow       = NULL;    
+    me->isVideo       = true;
     //me->mCodec        = NULL;
     //me->mMediaFormat  = NULL;
     //me->mLooper       = NULL;
@@ -267,7 +292,7 @@ status_t NdkMediaCodec_shutdown(NdkMediaCodec* me) {
     pthread_mutex_lock(&(me->mLock));
     me->mResult = doShutDown(me);
     if (me->mWindow != NULL) {
-		//TODO
+        //TODO
         //p_nw_release(me->mWindow);
         //me->mWindow = NULL;
     }

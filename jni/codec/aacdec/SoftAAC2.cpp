@@ -530,6 +530,7 @@ void SoftAAC2::onQueueFilled(OMX_U32 /* portIndex */) {
                 inBuffer[0] = inHeader->pBuffer + inHeader->nOffset;
                 inBufferLength[0] = inHeader->nFilledLen;
 
+                hexdump(inBuffer[0],inBufferLength[0]);//LIYL profile&samplingindex&channelnum
                 AAC_DECODER_ERROR decoderErr =
                     aacDecoder_ConfigRaw(mAACDecoder,
                                          inBuffer,
